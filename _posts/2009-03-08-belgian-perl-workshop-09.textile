@@ -1,0 +1,23 @@
+---
+layout: post
+category: conference
+title: belgian perl workshop 09
+---
+
+last weekend my co-workers and I went to the "Belgian Perl Workshop 09":http://conferences.mongueurs.net/bpw2009/. I attended the following presentations:
+
+ * "KiokuDB":http://conferences.mongueurs.net/bpw2009/talk/1720, by nothingmuch. Slides are available "here":http://www.iinteractive.com/kiokudb/talks/bpw2009.xul. We were able to talk with him during the afternoon, we might we use it at "work":http://rtgi.fr
+
+ * "Painless XSLT with Perl":http://conferences.mongueurs.net/bpw2009/talk/1740, by andrew shitov. Was interesting, even if I don't do any XSLT anymore. Again, some ideas might be used for work.
+
+ * "What are you pretending to be ?":http://conferences.mongueurs.net/bpw2009/talk/1792, by liz. That's a hell of a hack. The module is available on the "cpan":http://search.cpan.org/~elizabeth/persona/
+
+ * "Regular Expressions and Unicode Guru":http://conferences.mongueurs.net/bpw2009/event/473, by abigail. Feel better to know that I'm not the only one suffering with unicode in Perl ;). Learn some stuff like how to create a custom character classe, etc.
+
+ * "Catalyst":http://conferences.mongueurs.net/bpw2009/event/474, by matt trout. Ok, we're using Catalyst at work for our webservices. So we allready know about catalyst, but we were curious. And as i was hoping, we learn some nice tweaks. We discovered "Catalyst::Model::Adaptor":http://search.cpan.org/perldoc?Catalyst::Model::Adaptor, so we don't have to do some horrible stuff in our Controller any more, and some other interesting stuff were put in this talk. And matt is a really good speaker, manage to keep an audiance amused and interested.
+
+ * "Catalyst & AWS":http://conferences.mongueurs.net/bpw2009/event/476, by matt trout. Once again, a really good talk by matt. Some good advices, and a lot of fun.
+
+We didn't stay long for the social event in the evening; we had booked a hotel in bruxelles. But i'm glad that we were able to get to this perl workshop, it was well-organised, good talks, meet nice people, and learn some stuff. All in all, a good day :)
+
+some photos are available on "my flickr account":http://www.flickr.com/photos/franck_/sets/72157614745345532/

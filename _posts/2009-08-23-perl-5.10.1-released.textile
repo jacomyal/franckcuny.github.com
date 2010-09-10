@@ -1,0 +1,32 @@
+---
+layout: post
+category: perl
+title: Perl 5.10.1 released
+---
+
+"Perl 5.10.1":http://www.cpan.org/modules/by-authors/id/D/DA/DAPM/perl-5.10.1.tar.bz2 "have been release":http://www.nntp.perl.org/group/perl.perl5.porters/2009/08/msg150172.html.  You can download it from the CPAN, or if you can't wait, "here":http://www.iabyn.com/tmp/perl-5.10.1.tar.bz2.
+
+Next, you need to build it:
+
+{% highlight bash %}
+mkdir ~/perl/5.10.1
+cd ~/code/build/perl-5.10.1
+perl Configure -de -Dprefix=${HOME}/perl/5.10.1/
+make
+make test
+make install
+{% endhighlight %}
+
+Add the path to your environment
+
+{% highlight bash %}
+export PATH=${HOME}/perl/5.10.1/bin:$PATH
+{% endhighlight %}
+
+and install your CPAN's modules:
+
+{% highlight bash %}
+PERL_MM_USE_DEFAULT=1 cpan Bundle::CPANxxl Task::Kensho
+{% endhighlight %}
+
+Now you can start to play with it :)

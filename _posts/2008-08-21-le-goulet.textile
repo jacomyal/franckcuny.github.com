@@ -1,0 +1,8 @@
+---
+layout: post
+category: misc
+title: le goulet
+---
+
+<div style="text-align: left; padding: 3px;"><a title="photo sharing" href="http://www.flickr.com/photos/franck_/2783797596/"><img style="border: solid 2px #000000;" src="http://farm4.static.flickr.com/3096/2783797596_afc07c61ab.jpg" alt="" /></a></div>
+<a title="goulet de brest" href="http://fr.wikipedia.org/wiki/Goulet_de_Brest">le goulet</a>, <a title="rade de brest" href="http://fr.wikipedia.org/wiki/Rade_de_Brest">rade de brest</a>

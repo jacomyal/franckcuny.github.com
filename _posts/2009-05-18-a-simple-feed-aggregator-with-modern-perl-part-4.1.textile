@@ -1,0 +1,157 @@
+---
+layout: post
+title: A simple feed aggregator with modern Perl - part 4.1
+category: perl
+---
+
+You can thanks "bobtfish":http://github.com/bobtfish for being such a pedantic guy, 'cause now you will have a better chained examples. He forked my repository from github and fix some code that I'll explain here.
+
+h3. lib/MyFeedReader.pm
+
+{% highlight perl %}
+ package MyFeedReader;
++use Moose;
++use namespace::autoclean;
+
+-use strict;
+-use warnings;
+-
+-use Catalyst::Runtime '5.70';
++use Catalyst::Runtime '5.80';
+
+-use parent qw/Catalyst/;
++extends 'Catalyst';
+{% endhighlight %}
+
+You can see that he use "Moose":http://search.cpan.org/perldoc?Moose, so we can remove
+
+{% highlight perl %}
+use strict;
+use warnings;
+{% endhighlight %}
+
+and have a more elegant way to inherit from "Catalyst":http://search.cpan.org/perldoc?Catalyst with
+
+{% highlight perl %}
+extends 'Catalyst';
+{% endhighlight %}
+
+instead of
+
+{% highlight perl %}
+use parent qw/Catalyst/;
+{% endhighlight %}
+
+He also have updated the *Catalyst::Runtime* version, and added *namespace::autoclean*. The purpose of this module is to keep imported methods out of you namespace. Take a look at the "documentation":http://search.cpan.org/perldoc?namespace::autoclean, it's easy to understand how and why it's usefull.
+
+h3. lib/MyFeedReader/Controller/Root.pm
+
+{% highlight perl %}
+-use strict;
+-use warnings;
+-use parent 'Catalyst::Controller';
++use Moose;
++use namespace::autoclean;
++BEGIN { extends 'Catalyst::Controller' }
+
+-sub index :Path :Args(0) {
++sub root : Chained('/') PathPart() CaptureArgs(0) {}
++
++sub index : Chained('root') PathPart('') Args(0) {
+        my ( $self, $c ) = @_;
+
+        # Hello World
+        $c->response->body( $c->welcome_message );
+    }
+
+-sub default :Path {
++sub default : Private {
+        my ( $self, $c ) = @_;
+        $c->response->body( 'Page not found' );
+        $c->response->status(404);
+{% endhighlight %}
+
+A new method, *root*, that will be the root path for our application. All our methods will be chained from this action. If start you catalyst server and go to *http://localhost:3000/* you will be served with the Catalyst's welcome message as before.
+
+h3. lib/MyFeedReader/Controller/Entry.pm
+
+{% highlight perl %}
+-use warnings;
++use Moose;
+ use MyAggregator::Entry;
+-use parent 'Catalyst::Controller';
+-
+-__PACKAGE__->config->{namespace} = 'entry';
++use namespace::autoclean;
++BEGIN { extends 'Catalyst::Controller'; }
+
+-sub view : Chained('/') : PathPart('entry') : Args(1) {
++sub view : Chained('/root') : PathPart('entry') : Args(1) {
+     my ( $self, $c, $id ) = @_;
+
+     $c->stash->{entry} = $c->model('KiokuDB')->lookup($id);
+ }
+
+-1;
+-
++__PACKAGE__->meta->make_immutable;
+{% endhighlight %}
+
+We extends the _Catalyst::Controller_ in a Moose way, and the _make_immutable_ instruction is a Moose recommanded best practice (you can alsa add _no Moose_ after the make_immutable).
+
+h3. lib/MyFeedreader/Controller/Feed.pm
+
+{% highlight perl %}
++use Moose;
++use namespace::autoclean;
++BEGIN { extends 'Catalyst::Controller' }
+
+-use strict;
+-use warnings;
+-use parent 'Catalyst::Controller';
++sub feed : Chained('/root') PathPart('feed') CaptureArgs(0) {}
+
+-__PACKAGE__->config->{namespace} = 'feed';
+-
+-sub index : Path : Args(0) {
++sub index : Chained('feed') PathPart('') Args(0) {
+     my ( $self, $c ) = @_;
+
+     $c->stash->{feeds}
+         = [ $c->model('MyModel')->resultset('Feed')->search() ];
+ }
+
+-sub view : Chained('/') : PathPart('feed/view') : Args(1) {
++sub view : Chained('feed') : PathPart('view') : Args(1) {
+     my ( $self, $c, $id ) = @_;
+
+     $c->stash->{feed}
+         = $c->model('MyModel')->resultset('Feed')->find($id);
+ }
+
+-1;
++__PACKAGE__->meta->make_immutable;
+{% endhighlight %}
+
+We got _feed_ which is chained to root. _index_ is chained to feed, and take no arguments. This method display the list of our feeds. And we got the _view_ method, chained to feed too, but with one argument, that display the content of an entry.
+
+If you start the application, you will see the following routes:
+
+{% highlight perl %}
+    .-------------------------------------+--------------------------------------.
+    | Path Spec                           | Private                              |
+    +-------------------------------------+--------------------------------------+
+    | /root/entry/*                       | /root (0)                            |
+    |                                     | => /entry/view                       |
+    | /root/feed                          | /root (0)                            |
+    |                                     | -> /feed/feed (0)                    |
+    |                                     | => /feed/index                       |
+    | /root/feed/view/*                   | /root (0)                            |
+    |                                     | -> /feed/feed (0)                    |
+    |                                     | => /feed/view                        |
+    | /root                               | /root (0)                            |
+    |                                     | => /index                            |
+    '-------------------------------------+--------------------------------------'
+{% endhighlight %}
+
+I hope you got a better idea about chained action in catalyst now. And again, thanks to bobtfish for the code.

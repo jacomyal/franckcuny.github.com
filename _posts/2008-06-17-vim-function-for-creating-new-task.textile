@@ -1,0 +1,26 @@
+---
+layout: post
+category: app
+title: Vim function for creating new task
+---
+
+I've added a new function to my .vimrc for creating quickly a new task:
+
+{% highlight vim %}
+function! CreateTask()
+    let context = input("Enter context: ")
+    exe ":set noautoindent"
+    exe "normal 0"
+    exe "normal o \<tab>- [@".context."]  "
+    exe ":set autoindent"
+    exe ":startinsert"
+endfunction
+{% endhighlight %}
+
+and then this mapping:
+
+{% highlight vim %}
+map ct <esc>:call CreateTask()<cr>
+{% endhighlight %}
+
+Now, I've just to hit *,n*, type my context, a new line will be inserted and I just have to create my task.

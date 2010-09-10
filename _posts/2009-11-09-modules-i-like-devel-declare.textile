@@ -1,0 +1,248 @@
+---
+layout: post
+category: perl
+title: Modules I like Devel::Declare
+---
+
+For "$work":http://linkfluence.net/, I've been working on a job queue system, using Moose, Catalyst (for a REST API) and DBIx::Class to store the jobs and some meta (yeah I know, there is not enough job queue system already, the world really needs a new one ...).
+
+Basicaly, I've got a XXX::Worker class that all the workers extends. This class provide methods for fetching job, add a new job, mark a job as fail, retry, ...
+
+The main loop in the XXX::Worker class look like this:
+
+{% highlight perl %}
+# $context is a hashref with some info the job or method may need
+while (1) {
+    my @jobs = $self->fetch_jobs();
+    foreach my $job (@jobs) {
+        my $method = $job->{funcname};
+        $self->$method($context, $job);
+    }
+    $self->wait;
+}
+{% endhighlight %}
+
+and the worker look like this
+
+{% highlight perl %}
+package MyWorker;
+use Moose;
+extends 'XXX::Worker';
+
+sub foo {
+    my ($self, $context, $job) = @_;
+
+    # do something
+    $self->job_success();
+}
+{% endhighlight %}
+
+But as I'm using Moose, I want to add more sugar to the syntax, so writing a new worker would be really more easy.
+
+Here comes "Devel::Declare":http://search.cpan.org/perldoc?Devel::Declare.
+
+The syntax I want for my worker is this one:
+
+{% highlight perl %}
+work foo {
+    $self->logger->info("start to work on job");
+    # do something with $job
+};
+
+work bar {
+    # do something with $job
+};
+
+success foo {
+    $self->logger->info("woot job success");
+};
+
+fail bar {
+    $self->logger->info("ho noez this one failed");
+};
+{% endhighlight %}
+
+Where with '*work*' I write the code the writer will execute on a task, '*success*', a specific code that will be executed after a job is marked as successfull, and '*fail*' for when the job fail.
+
+I will show how to add the '*work*' keyword. I start by writing a new package:
+
+{% highlight perl %}
+package XXX::Meta;
+
+use Moose;
+use Moose::Exporter;
+use Moose::Util::MetaRole;
+
+use Devel::Declare;
+
+use XXX::Meta::Class;
+use XXX::Keyword::Work;
+
+Moose::Exporter->setup_import_methods();
+
+sub init_meta {
+    my ($me, %options) = @_;
+
+    my $for = $options{for_class};
+
+    XXX::Keyword::Work->install_methodhandler(into => $for,);
+
+    Moose::Util::MetaRole::apply_metaclass_roles(
+        for_class       => $for,
+        metaclass_roles => ['XXX::Meta::Class'],
+    );
+
+}
+
+1;
+{% endhighlight %}
+
+The *init_meta* method is provided by Moose: (from the POD)
+
+bq. The *init_meta* method sets up the metaclass object for the class specified by *for_class*. This method injects a a meta accessor into the class so you can get at this object. It also sets the class's superclass to base_class, with Moose::Object as the default.
+
+So I inject into the class that will use XXX::Meta a new metaclass, XXX::Meta::Class.
+
+Let's take a look to XXX::Meta::Class:
+
+{% highlight perl %}
+package XXX::Meta::Class;
+
+use Moose::Role;
+use Moose::Meta::Class;
+use MooseX::Types::Moose qw(Str ArrayRef ClassName Object);
+
+has work_metaclass => (
+    is      => 'ro',
+    isa     => Object,
+    builder => '_build_metaclass',
+    lazy    => 1,
+);
+
+has 'local_work' => (
+    traits     => ['Array'],
+    is         => 'ro',
+    isa        => ArrayRef [Str],
+    required   => 1,
+    default    => sub { [] },
+    auto_deref => 1,
+    handles    => {'_add_work' => 'push',}
+);
+
+sub _build_metaclass {
+    my $self = shift;
+    return Moose::Meta::Class->create_anon_class(
+        superclasses => [$self->method_metaclass],
+        cache        => 1,
+    );
+}
+
+sub add_local_method {
+    my ($self, $method, $name, $code) = @_;
+
+    my $method_name = $method . "_" . $name;
+    my $body        = $self->work_metaclass->name->wrap(
+        $code,
+        original_body => $code,
+        name          => $method_name,
+        package_name  => $self->name,
+    );
+
+    my $method_add = "_add_" . $method;
+    $self->add_method($method_name, $body);
+    $self->$method_add($method_name);
+}
+
+1;
+{% endhighlight %}
+
+Here I add to the *->meta* provided by Moose '*local_work*', which is an array that contains all my '*work*' methods. So each time I do something like
+
+{% highlight perl %}
+work foo {};
+
+work bar {};
+{% endhighlight %}
+
+in my worker, I add this method to **->meta->local_work**.
+
+And the class for our keyword work:
+
+{% highlight perl %}
+package XXX::Keyword::Work;
+
+use strict;
+use warnings;
+
+use Devel::Declare ();
+use Sub::Name;
+
+use base 'Devel::Declare::Context::Simple';
+
+sub install_methodhandler {
+    my $class = shift;
+    my %args  = @_;
+    {
+        no strict 'refs';
+        *{$args{into} . '::work'} = sub (&) { };
+    }
+
+    my $ctx = $class->new(%args);
+    Devel::Declare->setup_for(
+        $args{into},
+        {   work => {
+                const => sub { $ctx->parser(@_) }
+            },
+        }
+    );
+}
+
+sub parser {
+    my $self = shift;
+    $self->init(@_);
+
+    $self->skip_declarator;
+    my $name = $self->strip_name;
+    $self->strip_proto;
+    $self->strip_attrs;
+
+    my $inject = $self->scope_injector_call();
+    $self->inject_if_block(
+        $inject . " my (\$self, \$content, \$job) = \@_; ");
+
+    my $pack = Devel::Declare::get_curstash_name;
+    Devel::Declare::shadow_sub(
+        "${pack}::work",
+        sub (&) {
+            my $work_method = shift;
+            $pack->meta->add_local_method('work', $name, $work_method);
+        }
+    );
+    return;
+}
+
+1;
+{% endhighlight %}
+
+The *install_methodhandler* add the *work* keyword, with a block of code. This code is sent to the parser, that will add more sugar. With the inject_if_block, I inject the following line
+
+{% highlight perl %}
+my ($self, $context, $job) = @_;
+{% endhighlight %}
+
+as this will always be my 3 arguments for a work method.
+
+Now, for each new worker, I write something like this:
+
+{% highlight perl %}
+package MyWorker;
+use Moose;
+extends 'XXX::Worker';
+use XXX::Meta;
+
+work foo {};
+{% endhighlight %}
+
+The next step is too find the best way to reduce the first four lines to two.
+
+(some of this code is ripped from other modules that use Devel::Declare. The best way to learn what you can do with this module is to read code from other modules that use it)

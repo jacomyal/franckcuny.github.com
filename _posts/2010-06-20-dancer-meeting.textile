@@ -1,0 +1,31 @@
+---
+layout: post
+category: perl
+title: Monthly Dancer meeting
+---
+
+I've been contributing to Dancer for a few months now, and the discussions occurs mainly on IRC (irc.perl.org, #dancer) or on "the Mailing List":http://lists.perldancer.org/cgi-bin/listinfo/dancer-users.
+
+Last weekend, I had the occasion to meet sukria during the French Perl Workshop. This has been really productive, we had the occasion to talk about Plack, the templating system, websocket, ... and I really think we should have met before. It was also the occasion to meet another contributor, eiro, with whom I've been able to share some knowledge about Plack.
+
+During the workshop, I made a talk about Plack and the Middlewares. The direct result of this is "the last feature added by sukria":http://github.com/sukria/Dancer/commit/5ee83a5206e08256d7326f92c2f2f62c5e035ba9#L0R440: middlewares can be set in the configuration file of your Dancer application, and will be loaded for you.
+
+The next release of Dancer won't generate an *app.psgi* file anymore, so you will only need to edit your environment file (like _deployement.yaml_), and add the following configuration:
+
+{% highlight yaml %}
+warnings: 1
+auto_reload: 1
+plack_middlewares:
+    Debug:
+    - panels
+    -
+        - Response
+        - Dancer::Version
+        - Dancer::Settings
+{% endhighlight %}
+
+and your application will load some "Plack::Middleware::Debug":http://search.cpan.org/perldoc?Plack::Middleware::Debug and "Dancer::Debug":http://search.cpan.org/dist/Dancer-Debug/ panels.
+
+Sukria has suggested a monthly drinkup meeting for people in/near Paris, to talk about Dancer and Plack, in a pub or another place where we can bring a laptop, have some beers and share idea/codes and other exchange technicals thoughts.
+
+I hope to meet more Dancer developers and users in a near future (sawyer at Pise maybe ?).

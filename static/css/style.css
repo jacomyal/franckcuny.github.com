@@ -1,0 +1,186 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:regular);
+
+body {
+    font-family: 'Droid Sans',Verdana, sans-serif;
+    font-size: 1em;
+    line-height: 16pt;
+    background: #EEEEEE;
+}
+
+a, a:visited {
+    color: #666666;
+}
+
+a:hover {
+    color: #999999,
+}
+
+h1 {
+    font-size: 24pt;
+}
+
+h2 {
+    font-size: 20pt;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+h3 {
+    font-size: 14pt;
+    margin-top: 10px;
+}
+
+h1 a, h1 a:visited {
+    color: #C33C33;
+}
+
+ul {
+    list-style: disc;
+}
+
+li {
+    margin-left: 2em;
+}
+
+li#title {
+    color: red;
+    font-weight: bold;
+}
+li.sep {
+    color: white;
+}
+li.section {
+    font-weight: bold;
+}
+
+p, h1, h2, h3, ul {
+    margin-bottom: 0.5em;
+}
+
+section {
+    margin-top: 2em;
+}
+
+section h1 {
+    font-size: 20pt;
+    color: #C33C33;
+    margin-bottom: 8px;
+}
+
+section small {
+    font-size: 10pt;
+    color: gray;
+}
+
+section div.highlight {
+    padding: 10px 0px 20px 25px;
+}
+
+#container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    background: #FFFFFF;
+    padding: 20px;
+}
+
+header {
+    margin: -20px -20px 20px -20px;
+    padding: 5px;
+    background: #000000;
+}
+
+header h1 {
+    color: #C33C33;
+    font-size: 28pt;
+}
+
+header h1 a {
+    text-decoration: none;
+}
+
+header #nav {
+    display: inline;
+    list-style-type: none;
+    list-style: none;
+}
+
+header #nav li {
+    display: inline;
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+header #nav li a {
+    padding-top: 0px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+header #nav li a:hover {
+    color: #CCCCCC;
+}
+
+footer {
+    margin: 0 -20px -20px -20px;
+    padding: 10px;
+    background: #000000;
+}
+
+footer p {
+    color: #FFFFFF;
+}
+
+footer p img {
+    margin-bottom: -5px;
+}
+
+div.highlight {
+    background-color: #333333;
+    border: 5px solid #CCCCCC;
+    margin: 20px;
+    overflow: auto;
+    padding: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entry:after { 
+    content: '\002701';
+    font-size: 18pt; 
+    text-align: center; 
+    clear:both; 
+    display: block; 
+    margin: 5ex 0;
+}
+
+/*code {*/
+    /*margin-top: 15px;*/
+    /*margin-bottom: 15px;*/
+    /*font-size: 0.9em;*/
+    /*font-weight: bold;*/
+    /*display: block; */
+    /*padding-top: 10px; */
+    /*padding-left: 10px; */
+    /*padding-bottom: 10px; */
+    /*background-color: #000000; */
+    /*color: #ffffff*/
+/*}*/

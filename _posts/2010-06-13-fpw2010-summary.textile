@@ -1,0 +1,29 @@
+---
+layout: post
+category: conference
+title: FPW 2010 summary
+---
+
+First, no more "welsh":http://en.wikipedia.org/wiki/Welsh_rarebit. Ever.
+
+Even if Calais was not the easiest destination for every one, it was a really fun and intersting two days. I met nice folks, had great discussions and drink good beers.
+
+For those who missed this workshop, a short summary for you:
+
+ * had excellent discussions with "sukria":http://www.sukria.net/fr/ about the future of "Dancer":http://github.com/sukria/dancer
+ * fun facts about time zone and unicode with "maddingue":http://twitter.com/maddingue, "rgs":http://twitter.com/octoberequus and "fperrad":http://github.com/fperrad
+ * interesting chat with fperrad about lua and parrot
+ * convinced more people that Plack *is* the future for Perl Web development
+ * beers, and more beers with sukria, jerome, "arnaud":http://twitter.com/ephoz, rgs, "camille":http://twitter.com/cmaussan and "stephane":http://twitter.com/straux.
+ * talked with "Marc":http://www.tinybox.net/ about Plack, Dancer, and other stuff
+
+!http://farm5.static.flickr.com/4045/4695068097_1193f8c4d6.jpg(diner)
+
+My slides are available online (in french):
+
+ * github explorer: "slideshare":http://www.slideshare.net/franckcuny/github-explorer and "PDF":http://franck.lumberjaph.net/slides/github-explorer.pdf
+ * introduction to plack: "slideshare":http://www.slideshare.net/franckcuny/introduction-a-plack and "PDF":http://franck.lumberjaph.net/slides/introduction_a_plack.pdf
+
+And to finish, two other summaries: "sukria's one":http://www.sukria.net/fr/archives/2010/06/12/french-perl-workshop-2010-report/ and "twitter's timeline":http://twitter.com/#search?q=%23fpw2010; and "some pictures on flickr.":http://www.flickr.com/photos/franck_/sets/72157624263416548/
+
+*Thanks to laurent and sebastien for their hard work on organizing this conference.*

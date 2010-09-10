@@ -1,0 +1,11 @@
+---
+layout: post
+category: conference
+title: OSDC.fr
+---
+
+The 2nd and 3rd of October, will be held in Paris the <a href="http://act.osdc.fr/osdc2009fr/index.html">Open Source Developers Conference</a>. The purpose of this conference is to gather developers from various open source communities (Perl, Ruby, Python, ...) during two days.
+
+It's still possible de submit a talk about the subject of your choice, and it's important to note that this conference is free.
+
+<a href="http://rtgi.fr">RTGI</a> is proud to be one of the sponsor of this event :).

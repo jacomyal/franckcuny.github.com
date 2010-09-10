@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>{{ page.title }}</title>
+   <meta name="author" content="franck cuny" />
+   <link href="http://lumberjaph.net/index.atom" rel="alternate" title="Tom Preston-Werner" type="application/atom+xml" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/static/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen, projection" />
+
+</head>
+<body>
+
+<div class="site">
+  <div class="title">
+    <a href="/">I'm a lumberjaph</a>
+    <a class="extra" href="/">home</a>
+    <a class="extra" href="/archives.html">archives</a>
+    <a class="extra" href="/about/">about</a>
+    <a class="extra" href="/talks/">talks</a>
+    <a class="extra" href="/contact/">contact</a>
+  </div>
+  
+  {{ content }}
+  
+  <div class="footer">
+    <div class="contact">
+      <p>
+        franck cuny<br />
+        franck@lumberjaph.net
+      </p>
+    </div>
+    <div class="contact">
+      <p>
+        <a href="http://github.com/franckcuny/">github.com/franckcuny</a><br />
+        <a href="http://twitter.com/franckcuny/">twitter.com/franckcuny</a><br />
+      </p>
+    </div>
+    <div class="rss">
+      <a href="http://lumberjaph.net/index.atom">
+        <img src="/static/imgs/rss.png" alt="Subscribe to RSS Feed" />
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-117415-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

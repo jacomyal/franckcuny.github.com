@@ -1,0 +1,14 @@
+---
+layout: post
+category: app
+title: Customize your mysql prompt
+---
+
+To customize your mysql prompt, create a .my.cnf file in your $HOME then add the following:
+
+bc. [mysql]
+prompt="\\u [\\d] >"
+
+It will look like this:
+
+bc. username [dabatases_name] >

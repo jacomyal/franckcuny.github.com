@@ -1,0 +1,23 @@
+---
+category: app
+title: Ack
+layout: post
+---
+
+*"Ack is designed as a replacement for 99% of the uses of grep."*
+
+"Ack":http://search.cpan.org/~petdance/ack-1.84/ack is a real nice tool for searching your source code. It's faster than grep because he already knows what you want : searching sources files :)
+
+By default it will not search in SCM files (.svn, .cvs, ...), backups files (source.pl~, source.pl.bak, ...). You can specify what kind of files you want (--perl --cc, ...), make it match some regex with --match, ...
+
+And you can set some defaults configuration in a .ackrc file ! Mine looks like this:
+
+bc. --sort-files
+--color
+--context=1
+--follow
+
+
+p. Check also: "vim with ack integration":http://use.perl.org/~Ovid/journal/36430?from=rss.
+
+Oh, and it's the only program with --thpppt option.

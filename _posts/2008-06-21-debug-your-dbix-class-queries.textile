@@ -1,0 +1,21 @@
+---
+layout: post
+category: perl
+title: debug your DBIx::Class queries
+---
+
+If you use DBIx::Class and you want to see what the SQL generated looks like, you can set the environment variable DBIC_TRACE.
+
+{% highlight vim %}
+% DBIC_TRACE=1 my_programme.pl
+{% endhighlight %}
+
+And all the SQL will be printed on STDERR.
+
+If you give a filename to the variable, like this
+
+{% highlight vim %}
+% DBIC_TRACE="1=/tmp/sql.debug"
+{% endhighlight %}
+
+all the statements will be printed in this file.

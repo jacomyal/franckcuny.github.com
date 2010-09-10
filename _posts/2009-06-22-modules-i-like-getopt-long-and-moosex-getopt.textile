@@ -1,0 +1,133 @@
+---
+layout: post
+category: perl
+title: Modules I like Getopt::Long and MooseX::Getopt
+---
+
+h3. Getopt::Long
+
+"Getopt::long":http://search.cpan.org/perldoc?Getopt::Long is a useful module to parse command line arguements.
+
+A basic usage is something like this:
+
+{% highlight perl %}
+#!/usr/bin/perl -w
+use strict;
+use YAML::Syck;
+use Getopt::Long;
+
+GetOptions('config=s' => \my $cfg_file,);
+
+my $config = LoadFile $cfg_file
+{% endhighlight %}
+
+In *GetOptions*, we require a value for config with *config=s*. If we wante an integer, we replace 's' with 'i', and for a floating point, with 'f'.
+
+Call your script :
+
+{% highlight bash %}
+    script.pl --config=file.yml #this one works
+    script.pl --config file.yml  #this one too!
+    script.pl -c file.yml          #and this one too
+{% endhighlight %}
+
+The three syntaxes are understood.
+
+A good practices is to combine this module with "Pod::Usage":http://search.cpan.org/perldoc?Pod::Usage. Let's do some modifications on the example:
+
+{% highlight perl %}
+#!/usr/bin/perl -w
+use strict;
+use YAML::Syck;
+use Getopt::Long;
+use Pod::Usage;
+
+GetOptions('config=s' => \my $cfg_file,) or pod2usage(2);
+pod2usage(2) unless @ARGV > 0;
+
+my $config = LoadFile $cfg_file
+
+__END__
+=head1 NAME
+
+uberscript
+
+=head1 SYNOPSIS
+
+uberscript [options]
+
+Options:
+
+    --config  config file
+
+=head1 Options
+
+=over 4
+
+=item B<config>
+
+Path to the config file
+{% endhighlight %}
+
+then
+
+{% highlight bash %}
+$ perl uberscript
+
+Usage:
+    uberscript [options]
+
+    Options:
+        --config  config file
+{% endhighlight %}
+
+From now if we call our script without argument, the POD will be printed on STDIN.
+
+h3. MooseX::Getopt
+
+"MooseX::Getopt":http://search.cpan.org/perldoc?MooseX::Getopt) is a Role that add a <code>new_with_options</code> to your object. We create a basic Object :
+
+{% highlight perl %}
+package OurShinyObject;
+
+use Moose;
+with qw/MooseX::Getopt/;
+
+has 'config' => (isa => 'Str', is => 'ro', required => 1);
+has 'context' => (
+    isa     => 'HashRef',
+    is      => 'rw',
+    lazy    => 1,
+    traits  => ['NoGetopt'],
+    default => sub { LoadFile shift->config }
+);
+
+...
+{% endhighlight %}
+
+create a script to call this object
+
+{% highlight perl %}
+#!/usr/bin/perl -w
+use strict;
+use OurShinyObject;
+
+my $obj = OurShinyObject->new_from_options();
+
+{% endhighlight %}
+
+bc. script.pl --config file.yml
+
+The role will set our attribute **context** using the value from the argument set on the command line.
+
+The
+
+{% highlight perl %}
+traits => ['NoGetopt']
+{% endhighlight %}
+
+indicate that this attributes will be not be read from the command line. An alternate way to do this is to prefix the attributes with *_*.
+
+h3. conclusion (?)
+
+When you write a script, even if you're sure you will never need to have more than one argument, or that you never will have to update the code, *please* consider to use of *Getopt::Long* instead of a *shift @ARGV*, because we all know that you will at a certain point update this script and you will more than one argument :).

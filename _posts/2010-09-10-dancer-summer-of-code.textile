@@ -1,0 +1,128 @@
+---
+layout: post
+category: perl
+title: Dancer's Summer of Code
+---
+
+h3. Middleware
+
+After the "French Perl Workshop":http://journeesperl.fr/fpw2010/, we decided to focus our efforts on bringing middleware into Dancer. As the .psgi script is now obsolete, we wanted to simplify the middleware configuration for users not familiar with Plack.
+
+It's now possible to load a middleware by adding it to your configuration:
+
+{% highlight yaml %}
+plack_middlewares:
+    Debug:
+    - panels
+    -
+        - DBITrace
+        - Memory
+        - Timer
+{% endhighlight %}
+
+h3. YAPC::Eu 2010
+
+During YAPC::Eu, I've been happy to meet with "squeeks":http://github.com/squeeks, "sawyer":http://blogs.perl.org/users/sawyer_x/ and "Martin Berends":http://github.com/mberends. Sadly, we didn't have much time to talk and do some coding.
+
+I had already met Martin during the FPW, where he started to port Dancer to Perl6. His first objective is to have "HTTP::Server::Simple":http://github.com/mberends/http-server-simple work. I was really impressed with his works; if I manage to find some spare time soon, I will join his effort.
+
+h3. Dancer's application
+
+In august, "alexis":http://www.sukria.net/ brought a big effort to refactor the core of Dancer, to add the possibility to "plug" components to your application. This required a lot of rewriting, but in the meantime, we added more tests to ensure nothing would break.
+
+With this feature, you can do the following:
+
+{% highlight yaml %}
+package myapp::forum;
+use Dancer ':syntax';
+
+before => sub {
+    ...
+};
+
+get '/' => sub {
+    ...
+};
+
+package myapp:blog;
+use Dancer ':syntax';
+
+load_app 'myapp::forum', prefix => '/forum';
+
+before => sub {
+    ...
+};
+
+get '/' => sub {
+    ...
+};
+{% endhighlight %}
+
+Now you can request */* and */forum*. The before filter declared in the package *myapp::forum* will be executed when the */forum* path is matched, and the filter in *myapp::blog* will be executed for */*.
+
+h3. QA
+
+The weekend following the YAPC::EU, we held a small hackaton/QA day on irc.  Not many people were present, but we managed to achieve some results: 
+
+ * reached the 1K tests
+ * documentation cleanup
+ * added Hooks
+ * improved our code coverage
+
+Today our code average is over 92%, and we have more than 1200 tests.
+
+With the new hook system, two new keywords have been added: *before_template* and *after*. They work as the *before* keyword, except the *before_template* is executed before sending the tokens to the template, so you can modify them (a small example can be found in the "Dancer::Plugin::i18n":http://github.com/franckcuny/dancer-plugin-i18n). The *after* is executed before the response is sent to the user.
+
+Sukria has also set up an autobuild system for our two main branches. Every 15 minutes, the test suite is executed when there is a new commit, and builds a report. Code coverage is also measured, so we can always know the state of our various development cycles.
+
+h3. WebSocket
+
+This is the question that came back from time to time: when/will Dancer support websocket ?
+
+We investigated various ways to do this:
+
+ * new async. handler
+ * writing our own implementation
+ * ...
+
+I didn't want to write a websocket implementation for Dancer, as the spec are not yet final and it's not easy to do. Thanks to "clkao":http://github.com/clkao, we didn't have to care about all this, as he already wrote a Plack middleware for this: "Web::Hippie":http://search.cpan.org/perldoc?Web::Hippie::Pipe.
+
+So, what we did, is to use this middleware and add some syntactic sugar so people can use it easily in their applications. A small application is available "here":http://github.com/franckcuny/dancer-chat.
+
+This is not yet complete, it's only available in the 'devel' branch, and subject to change. A small code sample:
+
+{% highlight yaml %}
+websocket '/new_listener' => sub {
+    my $env   = request->env;
+    my $room  = $env->{'hippie.args'};
+    my $topic = $env->{'hippie.bus'}->topic($room);
+    $env->{'hippie.listener'}->subscribe($topic);
+};
+
+websocket '/message' => sub {
+    my $env   = request->env;
+    my $room  = $env->{'hippie.args'};
+    my $topic = $env->{'hippie.bus'}->topic($room);
+
+    my $msg = $env->{'hippie.message'};
+    $msg->{time} = time;
+    $msg->{address} = $env->{REMOTE_ADDR};
+    $topic->publish($msg);
+};
+{% endhighlight %}
+
+As you can see, a lot of stuff can be improved quite easily in terms of syntax.
+
+h3. Deployment
+
+We're also in the process of reworking our current Deployment documentation. Lots of people are trying to deploy Dancer using various configurations, and not all are well documented, or don't work as expected. If you use Dancer, and have deployed an application in a way not documened in our Deployement documentation, please join us on irc (#dancer on irc.perl.org) or contact us on the mailing list, or even better, send us a patch, so we can improve this part.  
+
+h3. Future
+
+There is also our next Dancer's meeting meeting to organize, at the end of Septembre.
+
+In October will take place the 2nd OSDC.fr, where I will talk about Plack, and alexis will present Dancer.
+
+I want to thank my company ("linkfluence":http://linkfluence.net) and my boss ("camille":http://twitter.com/cmaussan) for giving me time to code on Dancer at work.
+
+As always, thanks to blob for reviewing my (slightly improving) english :)

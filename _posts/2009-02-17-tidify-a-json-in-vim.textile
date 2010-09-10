@@ -1,0 +1,21 @@
+---
+layout: post
+category: perl
+title: tidify a json in vim
+---
+
+If you have to edit json files from vim, you may want to make them more readable, here is how you can do this:
+
+start by installing the JSON::XS perl module from the CPAN
+
+{% highlight perl %}
+sudo cpan JSON::XS
+{% endhighlight %}
+
+then, edit your .vimrc and add the following
+
+{% highlight vim %}
+map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
+{% endhighlight %}
+
+now while editing a json file, you can hit *,jt* (or whatever your leader is set to) and tidify a json.

@@ -1,0 +1,146 @@
+---
+layout: post
+category: perl
+title: Easily create REST interface with the Dancer 1.170
+---
+
+This week, with "Alexi":http://www.sukria.net/fr/'s help, "I've been working on":http://github.com/sukria/Dancer on adding auto-(de)serialization to Dancer's request. This features will be available in the next "Dancer":http://perldancer.org/ version, the 1.170 (which will be out before April).
+
+The basic idea was to provides to developer a simple way to access data that have been send in a serialized format, and to properly serialize the response.  
+
+At the moment, the supported serializers are :
+
+ * Dancer::Serialize::JSON
+ * Dancer::Serialize::YAML
+ * Dancer::Serialize::XML
+ * Dancer::Serialize::Mutable
+
+h3. Configuring an application to use the serializer
+
+To activate serialization in your application:
+
+bc. set serializer => 'JSON';
+
+or in your configuration file:
+
+bc. serializer: "JSON"
+
+h3. A simple handler
+
+Let's create a new dancer application (you can fetch the source on
+[github](http://github.com/franckcuny/dancerREST) :
+
+bq. dancer -a dancerREST
+cd dancerREST
+vim dancerREST.pm
+
+then
+
+{% highlight perl %}
+package dancerREST;
+use Dancer ':syntax';
+
+my %users = ();
+
+post '/api/user/' => sub {
+    my $params = request->params;
+    if ($params->{name} && $params->{id}) {
+        if (exists $users{$params->{id}}) {
+            return {error => "user already exists"};
+        }
+        $users{$params->{id}} = {name => $params->{name}};
+        return {id => $params->{id}, name => $params->{name}};
+    }
+    else {
+        return {error => "name is missing"};
+    }
+};
+
+true;
+{% endhighlight %}
+
+We can test if everything works as expected:
+
+bq. plackup app.psgi &
+curl -H "Content-Type: application/json" -X POST http://localhost:5000/api/user/ -d '{"name":"foo","id":1}'
+# => {"name":"foo","id":"1"}
+
+Now we add a method to fetch a list of users, and a method to get a
+specific user:
+
+{% highlight perl %}
+# return a specific user
+get '/api/user/:id' => sub {
+    my $params = request->params;
+    if (exists $users{$params->{id}}) {
+        return $users{$params->{id}};
+    }
+    else {
+        return {error => "unknown user"};
+    }
+};
+
+# return a list of users
+get '/api/user/' => sub {
+    my @users;
+    push @users, {name => $users{$_}->{name}, id => $_}
+        foreach keys %users;
+    return \@users;
+};
+{% endhighlight %}
+
+If we want to fetch the full list:
+
+bc. curl -H "Content-Type: application/json" http://localhost:5000/api/user/
+# => [{"name":"foo","id":"1"}]
+
+and a specific user:
+
+bc. curl -H "Content-Type: application/json" http://localhost:5000/api/user/1
+# => {"name":"foo"}
+
+h3. The mutable serializer
+
+The mutable serializer will try to load an appropriate serializer guessing from the *Content-Type* and *Accept-Type* header. You can also overload this by adding a *content_type=application/json* parameter to your request.
+
+While setting your serializer to mutable, your let your user decide which format they prefer between YAML, JSON and XML.
+
+h3. And the bonus
+
+Dancer provides now a new method to the request object : *is_ajax*. Now you can write something like
+
+{% highlight perl %}
+get '/user/:id' => sub {
+    my $params = request->params;
+    my $user   = $users{$params->{id}};
+    my $result;
+    if (!$user) {
+        _render_user({error => "unknown user"});
+    }
+    else {
+        _render_user($user);
+    }
+};
+
+sub _render_user {
+    my $result = shift;
+    if (request->is_ajax) {
+        return $result;
+    }
+    else {
+        template 'user.tt', $result;
+    }
+}
+{% endhighlight %}
+
+If we want to simulate an AJAX query:
+
+bc. curl -H "X-Requested-With: XMLHttpRequest" http://localhost:5000/user/1
+
+and we will obtain our result in JSON. But we can also test without the X-Requested-With:
+
+bc. curl http://localhost:5000/user/1
+
+and the template will be rendered.
+
+Hope you like this new features. I've also been working on something similar for "Tatsumaki":http://github.com/miyagawa/tatsumaki.

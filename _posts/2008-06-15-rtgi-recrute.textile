@@ -1,0 +1,14 @@
+---
+layout: post
+category: linkfluence
+title: RTGI recrute
+---
+
+<a href="http://www.rtgi.fr">RTGI</a> recrute pour 2 postes differents. Le premier, pour un poste "d'écologue", le second pour un poste développeur. La description des annonces est disponible <a href="http://franck.breizhdev.net/upload/0805_profil_poste_tech.pdf">ici</a>
+
+Vous pouvez voir differents travaux realises par RTGI ici:
+ 
+ * "blogopole":http://www.blogopole.fr/
+ * "segoland":http://www.visualcomplexity.com/vc/project.cfm?id=473
+ * "blogopole bis":http://www.visualcomplexity.com/vc/project.cfm?id=400
+ * "pw08":http://www.visualcomplexity.com/vc/project.cfm?id=542

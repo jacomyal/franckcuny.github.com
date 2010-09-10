@@ -1,0 +1,49 @@
+---
+layout: post
+category: perl
+title: Dancer 1.130
+---
+
+"Alexis":http://www.sukria.net/ ("sukria":http://search.cpan.org/~sukria/) released "Dancer":http://search.cpan.org/perldoc?Dancer 1.130 this weekend. Dancer is a small and nice web framework based on ruby's "sinatra":http://www.sinatrarb.com/.
+
+Dancer have few dependancies (and it doesn't depends anymore on CGI.pm). The path dispatching is done using rules declared with HTTP methods (get/post/put/delete), and they are mapped to a sub-routine which is returned as the response to the request. Sessions are supported, and two template engines (one of them is Template Toolkit) comes with the Core. Dancer::Template::MicroTemplate is also available on CPAN if you need a light template engine.  
+
+You can easily test it with a simple script
+
+{% highlight perl %}
+#!/usr/bin/env perl
+use Dancer;
+
+get '/' => sub {
+    return "dancer";
+};
+
+get '/:name' => sub {
+    return params->{name} . " is dancing";
+};
+
+dance;
+{% endhighlight %}
+
+and execute this script, point your browser to http://127.0.0.1:3000, and voila.
+
+Dancer provides also a small helper to write a new application:
+
+bc. dancer -a MyApplication
+
+If you create an application with this script, an **app.psgi** file will be created. You can now execute
+
+bc. plackup --port 8080
+
+(which comes with "Plack":http://search.cpan.org/perldoc?Plack the "Perl Web Server":http://plackperl.org/) and test if everything works fine:
+
+bc. curl http://localhost:8080
+
+This release remove some components from the core and they are now available as differents CPAN distributions. Two new keyword have also been added, *header* and *prefix*.
+
+If you want to read more about Dancer:
+
+ * "Dancer's documentation":http://search.cpan.org/perldoc?Dancer
+ * "review by xsawyerx":http://blogs.perl.org/users/sawyer_x/2010/01/i-gotz-me-a-dancer.html
+ * "gugod's review":http://gugod.org/2009/12/dancer.html
+ * "sukria's blog":http://www.sukria.net/fr/archives/tag/dancer/

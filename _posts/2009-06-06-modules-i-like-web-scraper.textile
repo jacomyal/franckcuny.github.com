@@ -1,0 +1,100 @@
+---
+layout: post
+category: perl
+title: modules I like Web::Scraper
+---
+
+For "$work":http://rtgi.fr I need to write scrapers. It used to be boring and painful. But thanks to "miyagawa":http://search.cpan.org/~miyagawa/, this is not true anymore. "Web::Scraper":http://search.cpan.org/perldoc?Web::Scraper offer a nice API: you can write your rules using XPath, you can chaine rules, a nice and simple syntax, etc.
+
+I wanted to export my data from my last.fm account but there is no API for this, so I would need to scrap them. All the data are available "as a web page":http://www.last.fm/user/franckcuny/tracks that list your music. So the scraper need to find how many pages, and find the content on each page to extract a list of your listening.
+
+For the total of pages, it's easy. Let's take a look at the HTML code and search for something like this:
+
+{% highlight html %}
+<a class="lastpage" href="/user/franckcuny/tracks?page=272">272</a>
+{% endhighlight %}
+
+the information is in a class *lastpage*.
+
+Now we need to find our data: I need the artist name, the song name and the date I played this song.
+
+All this data are in a *table*, and each new entry is in a *td*.
+
+{% highlight html %}
+<tr id="r9_1580_1920248170" class="odd">
+[...]
+    <td class="subjectCell">
+    <a href="/music/Earth">Earth</a>
+    <a href="/music/Earth/_/Sonar+and+Depth+Charge">Sonar and Depth Charge</a>
+    </td>
+[...]
+<td class="dateCell last">
+    <abbr title="2009-05-13T15:18:25Z">13 May 3:18pm</abbr>
+</td>
+{% endhighlight %}
+
+It's simple: information about a song are stored in *subjectcell*, and the artist and song title are each in a tag *a*. The date is in a *dateCell*, and we need the *title* from the *abbr* tag.
+
+The scraper we need to write is
+
+{% highlight perl %}
+my $scrap = scraper {
+    process 'a[class="lastpage"]', 'last'    => 'TEXT';
+    process 'tr',                  'songs[]' => scraper {
+        process 'abbr',                    'date' => '@title';
+        process 'td[class="subjectCell"]', 'song' => scraper {
+            process 'a', 'info[]' => 'TEXT';
+        };
+    }
+};
+{% endhighlight %}
+
+The first rule extract the total of page. The second iter on each *tr* and store the content in an array named *songs*. This *tr* need to be scraped. So we look the the *abbr* tag, and store in *date* the property *title*. Then we look for the song and artitst information. We look for the *td* with a class named *subjectCell*, a extract all links.  
+
+Our final script will look like this:
+
+{% highlight perl %}
+#!/usr/bin/perl -w
+use strict;
+use feature ':5.10';
+
+use Web::Scraper;
+use URI;
+use IO::All -utf8;
+
+my $username = shift;
+my $output   = shift;
+
+my $scrap = scraper {
+    process 'a[class="lastpage"]', 'last'    => 'TEXT';
+    process 'tr',                  'songs[]' => scraper {
+        process 'abbr',                    'date' => '@title';
+        process 'td[class="subjectCell"]', 'song' => scraper {
+            process 'a', 'info[]' => 'TEXT';
+        };
+    }
+};
+
+my $url = "http://www.last.fm/user/" . $username . "/tracks?page=";
+scrap_lastfm(1);
+
+sub scrap_lastfm {
+    my $page      = shift;
+    my $scrap_uri = $url . $page;
+    say $scrap_uri;
+    my $res      = $scrap->scrape(URI->new($scrap_uri));
+    my $lastpage = $res->{last};
+    foreach my $record (@{$res->{songs}}) {
+        my $line = join("\t", @{$record->{song}->{info}}, $record->{date});
+        $line . "\n" >> io $output;
+    }
+    $page++;
+    scrap_lastfm($page) if $page <= $lastpage;
+}
+{% endhighlight %}
+
+You can use this script like this:
+
+{% highlight bash %}
+perl lastfmscraper.pl franckcuny store_data.txt
+{% endhighlight %}
