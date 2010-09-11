@@ -19,15 +19,24 @@ html, body {
 }
 
 body {
-  background-color: white;
+  background-color: #edf1f3;   
+  color: #222;
+  line-height: 1.4em;          
+  /*margin: 20px auto 18px 25%;  */
+
+  /*background-color: white;*/
   font-family: 'Droid Sans',Verdana, sans-serif;
   /*font: 13.34px helvetica, arial, clean, sans-serif;*/
   *font-size: small;
   text-align: center;
-  background: #eeeeee;
+  /*background: #eeeeee;*/
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
+    font-size: 120%;
+}
+
+h3, h4, h5, h6 {
   font-size: 100%;
 }
 
@@ -85,6 +94,8 @@ ul.posts {
 
 .site {
   background: #ffffff;
+  border-style: solid;
+  border-width: 1px;
   padding: 1em;
   font-size: 110%;
   text-align: justify;
@@ -193,6 +204,10 @@ ul.posts {
 
   #post pre.terminal code {
     background-color: #333;
+  }
+
+  #date {
+    font-size: 80%;
   }
 
 #related {
