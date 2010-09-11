@@ -14,13 +14,13 @@ Last year, with help from my coworkers at "Linkfluence":http://linkfluence.net/,
 
  * "and how the websites theses authors are structured":http://cpan-explorer.org/2009/07/28/new-web-communities-map-for-yapceu/
 
-I wanted to do something similar again, but not with the same data. So I took a look at what could be a good subject. One of the things that we saw from the map of the websites is the importance [github](http://github.com/) is gaining inside the Perl community. Github provides a [really good API](http://develop.github.com/), so I started to play with it.
+I wanted to do something similar again, but not with the same data. So I took a look at what could be a good subject. One of the things that we saw from the map of the websites is the importance "github":http://github.com/ is gaining inside the Perl community. Github provides a "really good API":http://develop.github.com/, so I started to play with it.
 
 bq. This graph will be printed on a poster, size will be "A2":http://en.wikipedia.org/wiki/A2_paper_size and "A1":http://en.wikipedia.org/wiki/A1_paper_size". Please, contact me *(franck.cuny [at] linkfluence.net)* if you will be interested by one.
 
-<center>!/static/imgs/general.png(global)</center>
+<center>!/static/imgs/general.png(global)!</center>
 
-<center>!/static/imgs/zoom.png(zoom)</center>
+<center>!/static/imgs/zoom.png(zoom)!</center>
 
 This time, I didn't aim for the Perl community only, but the whole github communities. I've created several graphs:
 

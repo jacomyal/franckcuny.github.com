@@ -30,7 +30,7 @@ Out of the box, Dancer only has a simple logging system to write to file, but mo
 
 The last one is for writing directly your log message via <ah href="http://search.cpan.org/perldoc?Plack">Plack</a>. You can use a middleware like <a href="http://search.cpan.org/~miyagawa/Plack-0.9932/lib/Plack/Middleware/LogDispatch.pm">P::M::LogDispatch</a> or <a href="http://search.cpan.org/~miyagawa/Plack-0.9932/lib/Plack/Middleware/Log4perl.pm">P::M::Log4perl</a> to handle logs for your application. Even better, if you use <a href="http://github.com/miyagawa/Plack-Middleware-ConsoleLogger">P::M::ConsoleLogger</a>, you can have logs from your Dancer application in your javascript console.
 
-### Debug
+h3. Debug
 
 To debug your application with Plack, you can use the awesome <a href="http://search.cpan.org/perldoc?Plack::Middleware::Debug">Plack::Middleware::Debug</a>. I've writen <a href="http://github.com/franckcuny/dancer-debug">Dancer::Debug</a> (which requires my fork of <a href="http://github.com/franckcuny/Plack-Middleware-Debug">P::M::Debug</a>), a middleware that add panels, with specific informations for Dancer applications.
 

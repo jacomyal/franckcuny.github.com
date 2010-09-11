@@ -32,6 +32,10 @@ body {
   /*background: #eeeeee;*/
 }
 
+ul {
+  margin-left: 1.25em;
+}
+
 h1, h2 {
     font-size: 120%;
 }
