@@ -1,8 +1,0 @@
-RewriteEngine On
-Redirect permanent /blog/index.php/feed/ /index.atom
-Redirect permanent /archives.rss /index.atom
-Redirect permanent /index.rss /index.atom
-Redirect permanent /how-to-use-vim-as-a-personal-wiki.html /app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html
-Redirect permanent /rtgi-recrute--encore-.html /linkfluence/2009/01/18/rtgi-recrute-encore.html
-Redirect permanent /tidify-a-json-in-vim.html /perl/2009/02/17/tidify-a-json-in-vim.html
-Redirect permanent /belgian-perl-workshop-09.html /conference/2009/03/08/belgian-perl-workshop-09.html
