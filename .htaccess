@@ -1,1 +1,2 @@
 RewriteEngine On
+Redirect permanent /blog/index.php/feed/ /index.atom
