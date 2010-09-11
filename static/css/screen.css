@@ -6,6 +6,9 @@
 
 /* Global Reset */
 
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:regular);
+
 * {
   margin: 0;
   padding: 0;
@@ -17,9 +20,11 @@ html, body {
 
 body {
   background-color: white;
-  font: 13.34px helvetica, arial, clean, sans-serif;
+  font-family: 'Droid Sans',Verdana, sans-serif;
+  /*font: 13.34px helvetica, arial, clean, sans-serif;*/
   *font-size: small;
   text-align: center;
+  background: #eeeeee;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -79,6 +84,8 @@ ul.posts {
 /*****************************************************************************/
 
 .site {
+  background: #ffffff;
+  padding: 1em;
   font-size: 110%;
   text-align: justify;
   width: 50em;

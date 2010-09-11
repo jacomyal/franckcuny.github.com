@@ -32,7 +32,7 @@ In august, "alexis":http://www.sukria.net/ brought a big effort to refactor the 
 
 With this feature, you can do the following:
 
-{% highlight yaml %}
+{% highlight perl %}
 package myapp::forum;
 use Dancer ':syntax';
 
@@ -91,7 +91,7 @@ So, what we did, is to use this middleware and add some syntactic sugar so peopl
 
 This is not yet complete, it's only available in the 'devel' branch, and subject to change. A small code sample:
 
-{% highlight yaml %}
+{% highlight perl %}
 websocket '/new_listener' => sub {
     my $env   = request->env;
     my $room  = $env->{'hippie.args'};
