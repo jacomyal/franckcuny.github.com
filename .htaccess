@@ -2,3 +2,4 @@ RewriteEngine On
 Redirect permanent /blog/index.php/feed/ /index.atom
 Redirect permanent /archives.rss /index.atom
 Redirect permanent /index.rss /index.atom
+Redirect permanent /how-to-use-vim-as-a-personal-wiki.html /app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html
