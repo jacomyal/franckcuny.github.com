@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^index.rss /index.atom [L,R=301]
