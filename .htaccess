@@ -1,7 +1,7 @@
 ErrorDocument 404 http://lumberjaph.net/404.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RedirectMatch 301 /how-to-use-vim-as-a-personal-wiki.html /app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html
+    RewriteRule ^how-to-use-vim-as-a-personal-wiki.html http://lumberjaph.net/app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html [R=301,NC,L]
 </IfModule>
 
 #Redirect 301 /blog/index.php/feed/ /index.atom
