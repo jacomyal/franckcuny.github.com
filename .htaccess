@@ -1,3 +1,6 @@
+---
+layout: nil
+---
 RewriteEngine On
 Redirect 301 /blog/index.php/feed/ /index.atom
 Redirect 301 /archives.rss /index.atom
