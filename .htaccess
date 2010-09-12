@@ -1,11 +1,16 @@
 ---
 layout: nil
 ---
-RewriteEngine On
-Redirect 301 /blog/index.php/feed/ /index.atom
-Redirect 301 /archives.rss /index.atom
-Redirect 301 /index.rss /index.atom
-Redirect 301 /how-to-use-vim-as-a-personal-wiki.html /app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html
-Redirect 301 /rtgi-recrute--encore-.html /linkfluence/2009/01/18/rtgi-recrute-encore.html
-Redirect 301 /tidify-a-json-in-vim.html /perl/2009/02/17/tidify-a-json-in-vim.html
-Redirect 301 /belgian-perl-workshop-09.html /conference/2009/03/08/belgian-perl-workshop-09.html
+ErrorDocument 404 http://lumberjaph.net/404.html
+<IfModule mod_rewrite.c>
+    RedirectMatch 301 /how-to-use-vim-as-a-personal-wiki.html /app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html
+</IfModule>
+
+#RewriteEngine On
+#Redirect 301 /blog/index.php/feed/ /index.atom
+#Redirect 301 /archives.rss /index.atom
+#Redirect 301 /index.rss /index.atom
+#Redirect 301 /how-to-use-vim-as-a-personal-wiki.html /app/2008/06/14/how-to-use-vim-as-a-personal-wiki.html
+#Redirect 301 /rtgi-recrute--encore-.html /linkfluence/2009/01/18/rtgi-recrute-encore.html
+#Redirect 301 /tidify-a-json-in-vim.html /perl/2009/02/17/tidify-a-json-in-vim.html
+#Redirect 301 /belgian-perl-workshop-09.html /conference/2009/03/08/belgian-perl-workshop-09.html
