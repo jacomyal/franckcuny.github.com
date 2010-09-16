@@ -4,7 +4,7 @@ category: graph
 title: Github explorer
 ---
 
-bq. *More informations about the poster are available on "this post":http://lumberjaph.net/blog/index.php/2010/04/02/github-poster/*
+bq. *More informations about the poster are available on "this post":http://lumberjaph.net/graph/2010/04/02/github-poster.html*
 
 Last year, with help from my coworkers at "Linkfluence":http://linkfluence.net/, I created two sets of maps of the "Perl":http://perl.org and "CPAN":http://search.cpan.org/'s community. For this, I collected data from CPAN to create three maps:
 

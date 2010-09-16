@@ -38,14 +38,17 @@ ul {
 
 h1, h2 {
     font-size: 120%;
+      margin-top: 1em;
 }
 
 h3, h4, h5, h6 {
   font-size: 100%;
+      margin-top: 1em;
 }
 
 h1 {
   margin-bottom: 1em;
+   margin-top: 1em;
 }
 
 p {
