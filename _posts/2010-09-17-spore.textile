@@ -45,7 +45,7 @@ public_timeline:
 
 Whatever your language of choice is, you'll always need this informations. The idea with the API description, is that it can be reused by every language. If the API provider publishes this file, everyone can easily use it. It's very similar to a documentation (for the twitter description, all I needed to do was to copy/paste the documentation, it's really that simple) but it can be used by a framework to generate a client.
 
-The specifications should be in JSON (I've written the example in YAML for the sake of readability). The complete description of the specification is available "here":https://github.com/franckcuny/spore/blob/master/README.md.
+The specifications should be in JSON (I've written the example in YAML for the sake of readability). The complete description of the specification is available "here":https://github.com/franckcuny/net-http-spore/blob/master/spec/spore_description.pod.
 
 There is many advantages to do it this way:
 
@@ -56,7 +56,7 @@ I've started to write some specifications for a few services ("twitter":https://
 
 h3. Client Specification
 
-Now that we have a simple description for the API, we want to have an easy solution to use it. I will describe "the Perl implementation":https://github.com/franckcuny/net-http-spore, but there is also one for Ruby, and a early version for Clojure and Python.
+Now that we have a simple description for the API, we want to have "an easy solution to use it":https://github.com/franckcuny/net-http-spore/blob/master/spec/spore_implementation.pod. I will describe "the Perl implementation":https://github.com/franckcuny/net-http-spore, but there is also one for Ruby (will be published soon), and a early version for "Clojure":http://github.com/ngrunwald/clj-spore and "Python":http://github.com/elishowk/pyspore.
 
 This kind of thing is really easy to implement in dynamic languages, and still doable in others.
 
