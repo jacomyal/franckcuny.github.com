@@ -1,0 +1,164 @@
+---
+layout: post
+title: SPORE
+category: misc
+---
+
+h2. Specification to a POrtable Rest Environment
+
+More and more web services offer "ReST API":http://en.wikipedia.org/wiki/Representational_State_Transfer. Every time you want to access one of these services, you need to write a client for this API, or find an existing one. Sometimes, you will find the right library that will do exactly what you need. Sometimes you won't, and you end up writing your own.
+
+Some parts of an API client are always the same:
+
+ * build an uri
+ * make a request
+ * handle the response
+ * ...
+
+With SPORE, I propose a better solution for this. SPORE is composed of two parts:
+
+ * a specification that describes an API
+ * a "framework" for clients (think this as "WSGI":http://www.python.org/dev/peps/pep-0333/, "Plack":http://plackperl.org/, "Rack":http://rack.rubyforge.org/, "JSGI":http://jackjs.org/jsgi-spec.html, ...)
+
+h3. API Specifications
+
+I know, at this point, you're thinking "what ? isn't it just what "WSDL":http://en.wikipedia.org/wiki/Web_Services_Description_Language does ?". Well, yes. But it's (in my opinion) simpler to write this than to write a WSDL. And when you say "WSDL" people think ""SOAP":http://en.wikipedia.org/wiki/SOAP_(protocol)", and that's definitly not a good thing.
+
+The first part is the specification to API. A ReST request is mainly :
+
+ * a *HTTP method*
+ * a *path*
+ * some *parameters*
+
+This is *easy to describe*. For this example, I will use the "twitter API":http://dev.twitter.com/doc/get/statuses/public_timeline. So, if i want to describe the user timeline method, we will get something like this:
+
+{% highlight yaml %}
+public_timeline:
+  method: GET
+  path: /statuses/public_timeline.:format
+  params:
+    - trim_user
+    - include_entities
+  required:
+    - format
+{% endhighlight %}
+
+Whatever your language of choice is, you'll always need this informations. The idea with the API description, is that it can be reused by every language. If the API provider publishes this file, everyone can easily use it. It's very similar to a documentation (for the twitter description, all I needed to do was to copy/paste the documentation, it's really that simple) but it can be used by a framework to generate a client.
+
+The specifications should be in JSON (I've written the example in YAML for the sake of readability). The complete description of the specification is available "here":https://github.com/franckcuny/spore/blob/master/README.md.
+
+There is many advantages to do it this way:
+
+ * if you have a client in Perl and Javascript, the names of the methods are the same in both langages, and the names of parameters too
+ * if the API changes some endpoints, you don't have to change your code, you only need to update the description file
+
+I've started to write some specifications for a few services ("twitter":https://github.com/franckcuny/spore/blob/master/services/twitter.json, "github":https://github.com/franckcuny/spore/blob/master/services/github.json, "backtype":https://github.com/franckcuny/spore/blob/master/services/backtype.json, "backtweet":https://github.com/franckcuny/spore/blob/master/services/backtweet.json, ...) and applications ("couchdb":https://github.com/franckcuny/spore/blob/master/apps/couchdb.json, "presque":https://github.com/franckcuny/spore/blob/master/apps/presque.json). They are not complete yet, so you're welcomed to "fork the repository":https://github.com/franckcuny/spore, add missings methods, and add your own specifications! :)
+
+h3. Client Specification
+
+Now that we have a simple description for the API, we want to have an easy solution to use it. I will describe "the Perl implementation":https://github.com/franckcuny/net-http-spore, but there is also one for Ruby, and a early version for Clojure and Python.
+
+This kind of thing is really easy to implement in dynamic languages, and still doable in others.
+
+The client is composed of two parts: core and middlewares.
+
+The core will create the appropriate functions using the previous description. Thanks to metaprogramming, it's very easy to do it. If we use "Moose":http://search.cpan.org/perldoc?Moose, all I need to do, is to extend the "Moose::Meta::Method":http://search.cpan.org/perldoc?Moose::Meta::Method and add new attributes like:
+
+ * path
+ * method
+ * params
+ * authentication
+ * ...
+
+For each method declared in the description, I build a new Moose method I will attach to my class. Basicaly, the code looks like this:
+
+{% highlight perl %}
+foreach my $method_name ( keys %$methods_spec ) {
+    $class->meta->add_spore_method(
+        "user_timeline",
+        path     => '/statuses/public_timeline.:format',
+        required => [qw/format/],
+        params   => [qw/trim_user include_entities/]
+    );
+}
+{% endhighlight %}
+
+The code of the *user_timelime* method will be generated via the *add_spore_method*.
+
+Middlewares are the nice part of it. By default, the core only creates a request, executes it, and gives you the result. Nothing more. By adding middlewares, you can handle the following stuff:
+
+ * headers manipulation
+ * authentication (basic, OAuth, )
+ * (de)serialization (JSON, XML, YAML, CSV, ...)
+ * caching
+ * proxying
+ * ...
+
+<center>!/static/imgs/chart.png(schema)!</center>
+
+The most obvious middleware is the one that handles the format. When you load the middleware Format::JSON, it will set various headers on your request. In case of a GET method, the *Accept* header will be set to *application/json*. For a POST, the *Content-Type* will be also set. Before returning the result to the client, the content will be transformed from JSON to a Perl structure.
+
+For twitter, I can have a client with this few lines:
+
+{% highlight perl %}
+my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
+$client->enable('Format::JSON');
+
+my $timeline = $client->public_timeline( format => 'json', include_rts => 1 );
+my $tweets = $timeline->body;
+foreach my $tweet (@$tweets) {
+    say $tweet->{user}->{screen_name} . " says " . encode_utf8($tweet->{text});
+}
+{% endhighlight %}
+
+Now, I want to use my friends timeline, which requires OAuth ? easy
+
+{% highlight perl %}
+$client->enable(
+    'Auth::OAuth',
+    consumer_key    => $consumer_key,
+    consumer_secret => $consumer_secret,
+    token           => $token,
+    token_secret    => $token_secret,
+);
+my $friends_timeline = $client->friends_timeline(format => 'json', include_rts => 1);
+my $tweets = $friends_timeline->body;
+foreach my $tweet (@$tweets) {
+    print $tweet->{user}->{screen_name} . " says " . encode_utf8($tweet->{text}) . "\n";
+}
+{% endhighlight %}
+
+Middlewares are easy to write. They should implement a *call* method, which receive a request object as argument. The middleware can return:
+
+ * nothing: the next middleware will be executed
+ * a callback: it will be executed when the request is done, and will receive a response object
+ * a response object: no more middlewares will be executed
+
+A simple middleware that add a runtime header to the response object will look like this:
+
+{% highlight perl %}
+sub call {
+    my ( $self, $req ) = @_;
+
+    my $start_time = [Time::HiRes::gettimeofday];
+
+    $self->response_cb(
+        sub {
+            my $res      = shift;
+            my $req_time = sprintf '%.6f',
+              Time::HiRes::tv_interval($start_time);
+            $res->header( 'X-Spore-Runtime' => $req_time );
+        }
+    );
+}
+{% endhighlight %}
+
+I've tried to mimic as much as possible Plack's behavior. The result of a request is a Response object, but you can also use it as an arrayref, with the following values [http_code, [http_headers], body].
+
+h3. Conclusion
+
+The real target for this are not API developers (even if it's useful to have this when you write your own API, I will show some examples soon), neither client developers (even it's really easier to do with this), but people who want to play immediatly with an API to fetch data, without the coding skill or knowledge of what an HTTP request is, how to define headers, what is OAuth, ... As it was suggested to me, an implementation for "R":http://en.wikipedia.org/wiki/R_(programming_language) would be really usefull to a lot of people.
+
+Right now, I'm looking for people interested by this idea/project, and to work on completing the specification. I'm pretty happy with the current status, as it works with most API I've encountered.
+
+I will present SPORE and its implementations "during OSDC.fr":http://act.osdc.fr/osdc2010fr/ next month.
