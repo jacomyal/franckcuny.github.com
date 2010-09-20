@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <meta content="en-us" http-equiv="Content-Language" />
+   <meta charset="utf-8" />
    <title>{{ page.title }}</title>
    <meta name="author" content="franck cuny" />
    <link href="http://feeds.feedburner.com/ImALumberjaph" rel="alternate" title="I'm a lumberjaph" type="application/atom+xml" />
 
-   <!-- syntax highlighting CSS -->
-   <link rel="stylesheet" href="/static/css/syntax.css" type="text/css" />
+   <!--syntax highlighting CSS-->
+   <link rel="stylesheet" href="/static/css/syntax.css" />
 
-   <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/static/css/screen.css" type="text/css" media="screen, projection" />
+   <!--Homepage CSS-->
+   <link rel="stylesheet" href="/static/css/screen.css" media="screen, projection" />
 
-   <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+   <link href="/favicon.ico" rel="shortcut icon" />
    <link rel="openid.server" href="http://franckcuny.myopenid.com/" /> 
    <link rel="openid2.provider" href="http://franckcuny.myopenid.com/" /> 
    {% include analytics.html %}
@@ -21,17 +20,20 @@
 <body>
 
 <div class="site">
-  <div class="title">
-    <a href="/">I'm a lumberjaph</a>
-    <a class="extra" href="/">home</a>
-    <a class="extra" href="/archives.html">archives</a>
-    <a class="extra" href="/about/">about</a>
-    <a class="extra" href="/talks/">talks</a>
-    <a class="extra" href="/contact/">contact</a>
-  </div>
-  
+  <nav>
+    <div class="title">
+      <a href="/">I'm a lumberjaph</a>
+      <a class="extra" href="/">home</a>
+      <a class="extra" rel="archives" href="/archives.html">archives</a>
+      <a class="extra" rel="author" href="/about/">about</a>
+      <a class="extra" href="/talks/">talks</a>
+      <a class="extra" href="/contact/">contact</a>
+    </div>
+  </nav>
+
   {{ content }}
-  
+
+  <footer>
   <div class="footer">
     <div class="contact">
       <p>
@@ -46,11 +48,12 @@
       </p>
     </div>
     <div class="rss">
-      <a href="http://lumberjaph.net/index.atom">
+      <a href="http://feeds.feedburner.com/ImALumberjaph">
         <img src="/static/imgs/rss.png" alt="Subscribe to RSS Feed" />
       </a>
     </div>
   </div>
+  </footer>
 </div>
 
 </body>
