@@ -25,6 +25,8 @@ h3. demo
 
 "You can check Dancer's version":http://jitterbug.perldancer.org/. The interface is really simple: there's a list of repositories, the status of the last build, and a link to a list of all the project's builds.
 
+<center>!/static/imgs/jitterbug.png(jitterbug)!</center>
+
 h3. how it works
 
 For each project you want to use with jitterbug, you set the url of the HTTP hook in the administration page of your project. Each time a push is detected, GH will send you a notification (you can see details of the content). If the project doesn't already exist in your setup, it will be created, so you don't need to maintain or update a configuration file each time you create a new repository. The notification creates a task in a queue, and a script pulls the task and executes it.
