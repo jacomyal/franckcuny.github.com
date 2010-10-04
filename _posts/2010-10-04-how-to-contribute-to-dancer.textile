@@ -4,7 +4,7 @@ category: perl
 title: How to contribute to Dancer
 ---
 
-For our development projects, we rely a lot on Github. Lately, more and more people started contributing to Dancer, but not all of them are familiar with Github or git. Here is a little step-by-step guide on how to contribute.
+For our development projects, we rely a lot on Github. Lately, more and more people started contributing to Dancer, but not all of them are familiar with Github or git. Here is a little step-by-step guide on how to contribute. You don't need to be a Perl expert to contribute, you can provide help by correcting documentation error, or adding a new recipe to our cookbook.
 
 h3. the code
 
@@ -19,7 +19,7 @@ The devel branch is where we add new features, or improve existing features.
 
 h3. contributing
 
-First, go to "github.com/sukria/dancer:http://github.com/sukria/dancer and click on the "fork" button. Now, here is a little tutorial on how to fetch the repository, list the local and remote branches, and track the remote devel branch.
+First, go to "github.com/sukria/dancer":http://github.com/sukria/dancer and click on the "fork" button. Now, here is a little tutorial on how to fetch the repository, list the local and remote branches, and track the remote devel branch.
 
 <script src="http://gist.github.com/609443.js?file=forking%20dancer"></script>
 
