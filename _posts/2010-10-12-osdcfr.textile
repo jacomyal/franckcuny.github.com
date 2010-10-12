@@ -1,0 +1,32 @@
+---
+layout: post
+category: conference
+title: OSDC.fr report
+---
+
+This weekend I went to the second edition of the OSDC.fr conference. This conference is organized by the Python, Ruby, PHP and Perl french organizations. This edition was really really good, and well organized (kudo to the whole team!).
+
+The first day of the conference, we had two excellents talk about Git. The first one by "mojombo":http://github.com/mojombo, about "advanced git usages":http://git-tips.heroku.com/#1. I've mangaged to get him to sign my copy of the "github poster":http://lumberjaph.net/graph/2010/03/25/github-explorer.html. The second one by BooK was about his module "Git::Repository":http://search.cpan.org/perldoc?Git::Repository (which I use for "jitterbug":http://github.com/franckcuny/jitterbug). He show us how he used git to graph his familly tree.
+
+<center><img src="http://farm5.static.flickr.com/4070/5074738888_a6c2481b03_b.jpg" alt="github poster" /></center>
+
+Germain did an "introduction to Riak":http://www.slideshare.net/franckcuny/riak-a-file-system-for-internet, and "Julian":http://twitter.com/flngr did a talk about "Gephi":http://gephi.org/, about how it relies on the netbeans platform, and why a tool to visualize graphs is useful.
+
+I've talked about Plack in the afternoon, and "sukrias":http://sukria.net talked about Dancer right after me. I think both our talks went well, and his one was a nice demonstration of Dancer, since he used "Broadway":http://github.com/sukria/broadway to write his slides. I planned to do some demos during my talk, but a problem with my laptop prevented me to do this. Anyway, if you attended my talk and want to try them, here they are :
+
+<script src="http://gist.github.com/609646.js"> </script>
+
+The evening github offered the beers (yeah!) in a pub, and I had an intersting talk with "fperrad":http://github.com/fperrad about SPORE. Francois surprised me earlier last week when he contacted me to announce me he add write a Lua version of SPORE. He had some questions and suggestions for the current spec and API, and we managed to handle all the issues.
+
+The sunday I talked about "SPORE":http://github.com/franckcuny/spore. Even if the talk went not so well, I managed to interest some people, since I had some questions and positive feedback. I've not seen much talk the sunday, as I've spent some time with sukria and others to discuss about code. But I managed to see the talk about Redis which was good, and gave me some ideas for "presque":http://github.com/franckcuny/presque.
+
+The ligthning talks were also interesting. "Bruno Michel":http://twitter.com/brmichel talked about "EventMachine":http://rubyeventmachine.com/, "htty":http://github.com/htty and "mongrel2":http://mongrel2.org/home, "dolmen":http://search.cpan.org/~dolmen/ show us a small application to graph a svn repository, and "BooK":http://search.cpan.org/~book/ told us about his work on "Devel::TraceUse":http://search.cpan.org/perldoc?Devel::TraceUse.
+
+I wish I would have been able to attend "oz":http://twitter.com/ephoz presentation of "nodejs":http://cyprio.net/nodejs_osdc.pdf, and I've also missed the talks given by carl masak, since I was working with sukria on Dancer at that time.
+
+All the slides for my talks are available on slideshares:
+
+ * "Plack":http://www.slideshare.net/franckcuny/plack-et-les-middleware
+ * "SPORE"::http://www.slideshare.net/franckcuny/spore
+ * "jitterbug":http://www.slideshare.net/franckcuny/jitterbug
+ * "presque":http://www.slideshare.net/franckcuny/presque
