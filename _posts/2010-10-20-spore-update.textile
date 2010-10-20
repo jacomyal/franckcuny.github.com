@@ -1,5 +1,5 @@
 ---
-title: SPORE: update
+title: SPORE update
 layout: post
 category: misc
 ---
