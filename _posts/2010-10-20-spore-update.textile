@@ -99,8 +99,7 @@ The middleware Auth::Basic will add the *authorization* header to the request, u
 
 h3. SPORE + MooseX::Role::Parameterized
 
-I really like
-"MooseX::Role::Parameterized":http://search.cpan.org/perldoc?MooseX::Role::Parameterized.  This module allows you to build dynamically a Role to apply to your class/object: 
+I really like "MooseX::Role::Parameterized":http://search.cpan.org/perldoc?MooseX::Role::Parameterized. This module allows you to build dynamically a Role to apply to your class/object: 
 
 <script src="http://gist.github.com/623956.js"> </script>
 
