@@ -14,7 +14,7 @@ As I've said "in my OSDC report":http://lumberjaph.net/conference/2010/10/12/osd
 in addition to the already existing implementations:
 
  * "Perl":http://github.com/franckcuny/net-http-spore
- * "Lua":"http://github.com/fperrad/lua-Spore
+ * "Lua":http://github.com/fperrad/lua-Spore
  * "Clojure":http://github.com/ngrunwald/clj-spore
  * "Python":http://github.com/elishowk/pyspore
 
