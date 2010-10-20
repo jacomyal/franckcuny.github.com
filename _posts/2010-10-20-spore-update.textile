@@ -4,7 +4,7 @@ layout: post
 category: misc
 ---
 
-As I've said "in my OSDC report":http://lumberjaph.net/conference/2010/10/12/osdcfr.html, after I "presented SPORE":http://www.slideshare.net/franckcuny/spore I've had some positive feedback. In the last ten days, I've created a "google group":http://groups.google.com/group/spre-rest to discuss the current specification and implementations, a "SPORE account on github":http://github.com/SPORE to hold the implementation specifications and the API descriptions files, and more importantly, we have some new implementations:
+As I've said "in my OSDC report":http://lumberjaph.net/conference/2010/10/12/osdcfr.html, after I "presented SPORE":http://www.slideshare.net/franckcuny/spore I've had some positive feedback. In the last ten days, I've created a "google group":http://groups.google.com/group/spore-rest to discuss the current specification and implementations, a "SPORE account on github":http://github.com/SPORE to hold the implementation specifications and the API descriptions files, and more importantly, we have some new implementations: 
 
  * "Ruby":http://github.com/sukria/Ruby-Spore
  * "node.js":http://github.com/francois2metz/node-spore
