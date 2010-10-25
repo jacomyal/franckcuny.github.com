@@ -1,0 +1,21 @@
+Exercice différent aujourd’hui, puisqu’il s’agit d’une critique d’un livre.
+
+Il y a quelque jours, j’ai reçu une copie du livre “Perl moderne”:http://www.pearson.fr/livre/?GCOI=27440100979970, à paraitre le 29 octobre aux éditions Pearson. Il est intéressant à plus d’un titre : c’est un livre original, pas une traduction d’un énième livre sur Perl ; il se concentre sur le Perl dit “Moderne”, c’est-à-dire les outils comme "Moose":http://search.cpan.org/perldoc?Moose, "DBIx::Class":http://search.cpan.org/perldoc?DBIx::Class, etc ; il est écrit par des personnes impliquées dans la communauté Perl (ce sont des auteurs de modules CPAN, qui organisent des conférences Perl).
+
+J’en profite pour saluer au passages les auteurs de l’ouvrage: "Maddingue":http://github.com/maddingue, "BooK":http://github.com/book, "jq":http://github.com/jquelin et "dams":http://github.com/dams.
+
+La première bonne surprise est la taille du livre : au format poche. Je trouve ça pratique pour le transporter dans son sac (usager du métro, bonjour) et pour le laisser traîner sur le bureau sans qu’il prenne de la place. La seconde bonne surprise est le nombre de sujets abordés : une introduction solide aux base de Perl ; la programmation objet; les expressions régulières; les bases de données ; les manipulations de fichier XML ; et les outils pour faire du web.
+
+Un des points très positif du livre est sa partie sur la programmation objet. Les auteurs ont fait le choix de présenter Moose comme étant “Le” modèle objet à utiliser. Ils n’abordent pas du tout le modèle objet de base de Perl (pas d’explication de bless, etc), mais ça me semble un choix judicieux dans le cadre de l’apprentissage de Perl. Si la personne vient d’un autre langage objet, elle se retrouve tout de suite avec des bases qu’elle connaît (accesseurs, méthodes, héritages, etc) et des paradigmes probablement nouveaux, comme les Roles. Si la personne connaît déjà Perl, pas de redites.
+
+N’aimant pas particulièrement le SQL, j’ai trouvé agréable d’avoir une bonne introduction à DBIx::Class, qui vient compléter la partie sur DBI. Les bases de données dites “NoSQL” sont également présentées, avec notamment CouchDB.
+
+Enfin, la dernière partie est celle consacrée au web, avec la présentation des outils pour manipuler du HTML, réccuperer du contenu, ou encore automatiser des comportements sur des pages avec WWW::Mechanize.
+
+Par ailleurs, si après la lecture de cet ouvrage il vous vient à l’idée de vouloir réccuperer du contenu sur des pages web à l’aide d’expression régulière, il est fort probable que vous aillez lu ce livre à l’envers, ou c’est par pur goût de la provocation envers les auteurs.
+
+A, et un point négatif, me diriez vous ? Bien sûr que j’en ai un. A mon grand regret, nul part dans l’ouvrage il n’est fait référence à "Dancer":http://github.com/sukria/dancer. Tant pis !
+
+Dans l’ensemble c’est un bon livre pour qui veut découvrir Perl en 2010. Tous les outils que l’on s’attend à utiliser au quotidien sont présentés. L’organisation du livre, et le fait d’avoir de nombreux exemples, seront pratiques pour les débutants. Je pense en commander quelques exemplaires pour le travail, afin de le mettre à disposition de nos (futurs) stagiaires.
+
+"Perl Moderne":http://www.pearson.fr/livre/?GCOI=27440100979970 est publié par "Pearson":http://www.pearson.fr/, parution le 29 octobre. ISBN: "978-2-7440-2419-1":http://www.amazon.fr/Perl-S%C3%A9bastien-Aperghis-Tramoni/dp/2744024198/ref=sr_1_1?ie=UTF8&qid=1288034071&sr=8-1 (22 €)
