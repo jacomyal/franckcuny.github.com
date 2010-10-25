@@ -1,3 +1,8 @@
+---
+layout: post
+title: Perl Moderne
+category: misc
+---
 Exercice différent aujourd’hui, puisqu’il s’agit d’une critique d’un livre.
 
 Il y a quelque jours, j’ai reçu une copie du livre "Perl moderne":http://www.pearson.fr/livre/?GCOI=27440100979970, à paraitre le 29 octobre aux éditions Pearson. Il est intéressant à plus d’un titre : c’est un livre original, pas une traduction d’un énième livre sur Perl ; il se concentre sur le Perl dit “Moderne”, c’est-à-dire les outils comme "Moose":http://search.cpan.org/perldoc?Moose, "DBIx::Class":http://search.cpan.org/perldoc?DBIx::Class, etc ; il est écrit par des personnes impliquées dans la communauté Perl (ce sont des auteurs de modules CPAN, qui organisent des conférences Perl).
