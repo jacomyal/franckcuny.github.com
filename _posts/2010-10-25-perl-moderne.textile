@@ -17,7 +17,7 @@ N’aimant pas particulièrement le SQL, j’ai trouvé agréable d’avoir une 
 
 Enfin, la dernière partie est celle consacrée au web, avec la présentation des outils pour manipuler du HTML, réccuperer du contenu, ou encore automatiser des comportements sur des pages avec WWW::Mechanize.
 
-Par ailleurs, si après la lecture de cet ouvrage il vous vient à l’idée de vouloir réccuperer du contenu sur des pages web à l’aide d’expression régulière, il est fort probable que vous aillez lu ce livre à l’envers, ou c’est par pur goût de la provocation envers les auteurs.
+Par ailleurs, si après la lecture de cet ouvrage il vous vient à l’idée de vouloir récupérer du contenu sur des pages web à l’aide d’expression régulières, il est fort probable que vous ayez lu ce livre à l’envers, ou c’est par pur goût de la provocation envers les auteurs.
 
 A, et un point négatif, me diriez vous ? Bien sûr que j’en ai un. A mon grand regret, nulle part dans l’ouvrage il n’est fait référence à "Dancer":http://github.com/sukria/dancer. Tant pis !
 
