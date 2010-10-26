@@ -19,7 +19,7 @@ Enfin, la dernière partie est celle consacrée au web, avec la présentation de
 
 Par ailleurs, si après la lecture de cet ouvrage il vous vient à l’idée de vouloir réccuperer du contenu sur des pages web à l’aide d’expression régulière, il est fort probable que vous aillez lu ce livre à l’envers, ou c’est par pur goût de la provocation envers les auteurs.
 
-A, et un point négatif, me diriez vous ? Bien sûr que j’en ai un. A mon grand regret, nul part dans l’ouvrage il n’est fait référence à "Dancer":http://github.com/sukria/dancer. Tant pis !
+A, et un point négatif, me diriez vous ? Bien sûr que j’en ai un. A mon grand regret, nulle part dans l’ouvrage il n’est fait référence à "Dancer":http://github.com/sukria/dancer. Tant pis !
 
 Dans l’ensemble c’est un bon livre pour qui veut découvrir Perl en 2010. Tous les outils que l’on s’attend à utiliser au quotidien sont présentés. L’organisation du livre, et le fait d’avoir de nombreux exemples, seront pratiques pour les débutants. Je pense en commander quelques exemplaires pour le travail, afin de le mettre à disposition de nos (futurs) stagiaires.
 
