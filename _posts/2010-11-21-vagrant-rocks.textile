@@ -6,24 +6,24 @@ category: misc
 
 h2. tl;dr
 
-I've been toying with "vagrant":http://vagrantup.com/ lately, and it *really rocks*. You should definitly gave it a try. If you're only looking for some resources to get started with it, go there:
+I've been toying with "vagrant":http://vagrantup.com/ lately, and it *really rocks*. You should definitly give it a try. If you're only looking for some resources to get started with it, go there:
 
  * "introduction":http://vagrantup.com/docs/index.html
  * "google group":http://groups.google.com/group/vagrant-up
 
 h2. What is Vagrant
 
-"Vagrant is a tool for building and distributing virtualized development environments." This sentence summarize perfectly what it is.
+"Vagrant is a tool for building and distributing virtualized development environments." This sentence summarizes perfectly the project.
 
 The idea is to use "Chef":http://www.opscode.com/chef on top of "VirtualBox":http://www.virtualbox.org/ to deploy a VM like you would deploy a server in your production environment.
 
-I won't go in details to describe Chef and VirtualBox, but here is a quick reminder. Chef is a framework to deploy infrastructure. It's in ruby, it uses *cookbooks* to describe how to deploy stuff, and VirtualBox is a virtualization software from -Sun- Oracle.
+I won't go into the details to describe Chef and VirtualBox, but here is a quick reminder. Chef is a framework to deploy infrastructures. It's written in ruby, it uses *cookbooks* to describe how to deploy stuff, and VirtualBox is a virtualization software from -Sun- Oracle.
 
-bq. A little disclaimer. I don't use Chef outside from vagrant, so I may say/do some stupid things. The aim of this tutorial is not about writing a recipe for Chef, but to show what you can do thanks to Chef.  So Don't hesitate to correct me in the comments if I'm doing some utterly stupid things.
+bq. A little disclaimer. I don't use Chef outside from vagrant, so I may say/do some stupid things. The aim of this tutorial is not about writing a recipe for Chef, but to show what you can do thanks to Chef. So don't hesitate to correct me in the comments if I'm doing some utterly stupid things.
 
 h2. The basic
 
-To install vagrant, you'll need ruby and virtualbox. You have the basic instruction detailed "here":http://vagrantup.com/docs/getting-started/index.html. This will explain how to install vagrant and how to fetch a _base_ image.
+To install vagrant, you'll need ruby and virtualbox. You have the basic instructions detailed "here":http://vagrantup.com/docs/getting-started/index.html. This will explain how to install vagrant and how to fetch a _base_ image.
 
 h3. Creating a first project
 
@@ -32,32 +32,32 @@ You'll probably want to start creating a new project now. For this tutorial, I'l
 bc.. mkdir presque
 vagrant init
 
-p. This will create a new image for your project, and create a new file in your directory: _Vagrantfile_. Modify this file to make it looks like this:
+p. This will create a new image for your project, and create a new file in your directory: _Vagrantfile_. Modify this file to make it look like this:
 
 <script src="https://gist.github.com/705569.js?file=ruby"></script>
 
-This instructions will:
+These instructions will:
 
  * tell vagrant to use the image named _base_ (a lucid32 image by default)
- * to use chef in mode _solo_
+ * use chef in _solo_ mode 
  * the recipes will be in a directory named _cookbooks_
  * the main recipe will be named _vagrant_main_
- * to forward local HTTP port 4000 to 5000 on the VM
+ * forward local HTTP port 4000 to 5000 on the VM
 
 h3. My recipes 
 
 Now we need to create or use some recipes. First we create our _cookbooks_ directory:
 
 bc.. mkdir cookbooks
-mkdir -p cookbooks/vagran_main/recipes
+mkdir -p cookbooks/vagrant_main/recipes
 
 p. We need to add some cookbooks. You will find them on "github":https://github.com/opscode/cookbooks. Copy the following cookbooks inside the _cookbooks_ repository:
 
- * apt: instruction on how to use apt
- * ubuntu: this one manages the sources and execute _apt-get update_
- * build-essential: install the build-essential package
- * git: install git
- * perl: configure CPAN
+ * apt: instructions on how to use apt
+ * ubuntu: this one manages the sources and executes _apt-get update_
+ * build-essential: installs the build-essential package
+ * git: installs git
+ * perl: configures CPAN
  * runit: will be used to monitor redis and our web application
 
 Edit _vagrant_main/recipes/default.rb_ to add them:
@@ -73,11 +73,11 @@ p. or
 
 bc.. vagrant up
 
-p. This will deploy the previous cookbooks on the VM. When it's done, you can log on:
+p. This will deploy the previous cookbooks on the VM. When it's done, you can log on the VM:
 
 bc.. vagrant ssh
 
-p. You'll need to additional recipe: one for redis; one for presque. You'll find them on my "github account":http://github.com/franckcuny/cookbooks/. Copy the two recipes inside your cookbook directory, and execute @vagrant provision@ to install them.
+p. You'll need to additional recipes: one for redis; one for presque. You'll find them on my "github account":http://github.com/franckcuny/cookbooks/. Copy the two recipes inside your cookbook directory, and execute @vagrant provision@ to install them.
 
 If everything works fine, you should be able to start using presque. Test this:
 
@@ -95,18 +95,18 @@ Instead of pulling from github, you may prefer to mount a local directory on the
 bc.. config.vm.share_folder "v-code", "/deployment/code", "~/code/perl5"
 config.vm.share_folder "v-data", "/deployment/data", "~/code/data"
 
-p. This will mount your local directory _perl5_ and _data_ under _/deployment/{code,data}_ on the VM. So now you can edit your files localy and they will be updated on the VM at the same time.
+p. This will mount your local directories _perl5_ and _data_ under _/deployment/{code,data}_ on the VM. So now you can edit your files locally and they will be automagically updated on the VM at once.
 
 h2. and now the awesome part
 
-If you're like me, you may end up with the need to have multiple VMs which will talk to each others. Common scenarios are a VM with the website, and another one with the DB, or one VM with a bunch of API webservices and another with Workers who need to interact with the VM. Rejoice, this kind of stuff is also handle by vagrant!
+If you're like me, you may end up with the need to have multiple VMs which will talk to each other. Common scenarios are a VM with the website, and another one with the DB, or one VM with a bunch of API webservices and another with Workers who need to interact with the VM. Rejoice, this kind of stuff is also handled by vagrant!
 
 Replace the content of the previous _Vagrantfile_ with this:
 
 <script
 src="https://gist.github.com/705569.js?file=multiples%20vm"></script>
 
-In this configuration, we're creating two VMs, _presque_ and _workers_. You'll need to create two new cookbooks, one for each new VM (vagrant_presque, with the same content as vagrant_main, and vagrant_workers, with only the recipe for ubuntu and the instruction to install curl). Once it's done, boot the two VMs:
+In this configuration, we're creating two VMs, _presque_ and _workers_. You'll need to create two new cookbooks, one for each new VM (vagrant_presque, with the same content as vagrant_main, and vagrant_workers, with only the recipe for ubuntu and the instructions to install curl). Once it's done, boot the two VMs:
 
 bc.. vagrant up presque
 vagrant up workers
@@ -117,14 +117,15 @@ bc.. $ vagrant ssh workers
 vagrant@vagrantup:~$ curl http://192.168.1.10:5000/q/foo
 {"error":"no job"}
 
-p. and voila.
+p. and voilà.
 
 h2. Conclusion
 
-I've started to use vagrant for all my new personal projects and for most of my work stuff. I really enjoy using this, as it's easy to create a cookbook or add one, it's easy to setup a multi vm environment, you can share a configuration amongst your coworkers, etc.
+I've started to use vagrant for all my new personal projects and for most of my stuff at work. I really enjoy using this, as it's easy to create a cookbook or add one, it's easy to setup a multi VM environment, you can share a configuration amongst your coworkers, etc.
 
-If you haven't started yet to use a VM for your own projects, you really should give it a try, or use a simple VirtualBox setup. If you want to read more on the subject, this two blog posts may be relevant to your interest:
+If you haven't started yet using a VM for your own projects, you really should give it a try, or use a simple VirtualBox setup. If you want to read more on the subject, these two blog posts may be relevant:
 
  * "Why you should be using virtualisation":http://morethanseven.net/2010/11/04/Why-you-should-be-using-virtualisation.html
  * "nothingmuch setup":http://blog.woobling.org/2010/10/headless-virtualbox.html
 
+(oh, and BTW, did you notice that "Dancer 1.2":http://search.cpan.org/perldoc?Dancer is out ?)
