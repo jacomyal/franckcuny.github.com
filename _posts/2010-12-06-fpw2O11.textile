@@ -3,11 +3,10 @@ layout: post
 title: French Perl Workshop
 category: perl
 ---
+I joined the organization team for the next French Perl Workshop, which should take place in Paris in June. I'll help the existing team (composed of Laurent Boivins, Sebastien DeSeille and "maddingue":http://twitter.com/maddingue) and also the newcomers ("cmaussan":http://twitter.com/cmaussan and "eiro":http://github.com/eiro).
 
-I've joined the organisation team for the next French Perl Workshop, which sould take place in Paris, sometimes in June. I'll help the existing team (composed of Laurent Boivins, Sebastien DeSeille and "maddingue":http://twitter.com/#!/maddingue) and also the new comers ("cmaussan":http://twitter.com/cmaussan and "eiro":https://github.com/eiro).
+We've already decided to organize it in Paris, since last year it was in "Calais":http://journeesperl.fr/fpw2010/, and the idea is to organize once every two years in Paris. We don't have yet a venue and a date, but we will try to keep you informed about this.
 
-We've already decided to organise it in Paris, since these year it was "in Calais":http://journeesperl.fr/fpw2010/, and the idea is to organize once every two years in Paris. We don't have yet a venue and a date, but we will try to keep you informed about this.
+The main theme should be "Modern Perl", and we would like to reach a wider audience than previous years: people who are not yet in the Perl community, as well as some foreigners (hey, Paris is a beautiful city).  
 
-The main theme should be "Modern Perl", and we would like to reach a wider audience than previous years: people who are not in the Perl community, but also some foreigners (hey, Paris is a beautiful city).  
-
-I'll try to communicate about our progress at least once a month, and find a reason to motivate you to come! :)
+I'll try to communicate about our progress at least once a month, and find reasons to motivate you to come! :)
