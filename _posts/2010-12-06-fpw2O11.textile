@@ -4,7 +4,7 @@ title: French Perl Workshop
 category: perl
 ---
 
-I've joined the organisation team for the next French Perl Workshop, which sould take place in Paris, sometimes in June. I'll help the existing team (composed of Laurent Boivins, Sebastien DeSeille and maddingue) and also the new comers (cmaussan and eiros).
+I've joined the organisation team for the next French Perl Workshop, which sould take place in Paris, sometimes in June. I'll help the existing team (composed of Laurent Boivins, Sebastien DeSeille and "maddingue":http://twitter.com/#!/maddingue) and also the new comers ("cmaussan":http://twitter.com/cmaussan and "eiro":https://github.com/eiro).
 
 We've already decided to organise it in Paris, since these year it was in Calais, and the idea is to organize once every two years in Paris. We don't have yet a venue and a date, but we will try to keep you informed about this.
 
