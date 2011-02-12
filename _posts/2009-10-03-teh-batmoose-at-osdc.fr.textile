@@ -4,7 +4,7 @@ category: conference
 title: teh batmoose at osdc.fr
 ---
 
-Today I presented a talk about Moose at <a href="http://osdc.fr/">OSDC.fr</a>.  The slides are available "here":http://franck.lumberjaph.net/stuff/Introduction_a_Moose.pdf.
+Today I presented a talk about Moose at <a href="http://osdc.fr/">OSDC.fr</a>. The slides are available "here":http://franck.lumberjaph.net/blog/slides/Introduction_a_Moose.pdf.
 
 And big thanks to my friend <a href="http://www.bwoup.com/">Morgan</a> for his illustration of the batmoose :)
 

@@ -21,7 +21,7 @@ For those who missed this workshop, a short summary for you:
 
 My slides are available online (in french):
 
- * github explorer: "slideshare":http://www.slideshare.net/franckcuny/github-explorer and "PDF":http://franck.lumberjaph.net/slides/github-explorer.pdf
+ * github explorer: "slideshare":http://www.slideshare.net/franckcuny/github-explorer and "PDF":http://franck.lumberjaph.net/blog/slides/github-explorer.pdf
  * introduction to plack: "slideshare":http://www.slideshare.net/franckcuny/introduction-a-plack and "PDF":http://franck.lumberjaph.net/slides/introduction_a_plack.pdf
 
 And to finish, two other summaries: "sukria's one":http://www.sukria.net/fr/archives/2010/06/12/french-perl-workshop-2010-report/ and "twitter's timeline":http://twitter.com/#search?q=%23fpw2010; and "some pictures on flickr.":http://www.flickr.com/photos/franck_/sets/72157624263416548/

@@ -135,6 +135,6 @@ This is a really well-connected graph too.
 
 h3. Conclusions and graphs
 
-I may have not provided a deep analysis of all the graph. I don't have knowledge of most of the community outside of Perl. Feel free to <a href="http://franck.lumberjaph.net/graphs.tgz">download the graph</a>, to load them in <a href="http://gephi.org/">Gephi</a>, experiment, and provides your own thoughts.
+I may have not provided a deep analysis of all the graph. I don't have knowledge of most of the community outside of Perl. Feel free to <a href="http://franck.lumberjaph.net/blog/graphs.tgz">download the graph</a>, to load them in <a href="http://gephi.org/">Gephi</a>, experiment, and provides your own thoughts.
 
 I would like to thanks everybody at <a href="http://twitter.com/linkfluence">Linkfluence</a> (<a href="http://twitter.com/gfouetil">guilhem</a> for his advices, <a href="http://twitter.com/cmaussan">camille</a> for giving me time to work on this, and antonin for the amazing poster), who have helped me and let me use time and resources to finish this work. Special thanks to <a href="http://code.google.com/p/tinyaml/">blob</a> for reviewing my prose and <a href="http://twitter.com/cdlm">cdlm</a> for the discussion :)
