@@ -20,16 +20,12 @@ li {
 
 h1, h2 {
    font-size: 120%;
-   margin-top: 1em;
+   margin: 1em 0em .5em 0em;
 }
 
 h3, h4, h5, h6 {
    font-size: 100%;
-   margin-top: 1em;
-}
-
-h1 {
-   margin-bottom: 1em;
+   margin: 1em 0em .5em 0em;
 }
 
 p {
@@ -179,8 +175,17 @@ ul.posts span {
    font-weight: normal;
 }
 
-#post_title {
+#post h2 {
+   border-bottom: 1px solid #ededed;
+   margin-top: 2em;
+}
 
+#post h3 {
+   border-bottom: 1px solid #ededed;
+   margin-top: 2em;
+}
+
+#post_title {
    text-align: left;
    padding-bottom: .1em;
    letter-spacing: 2px;
