@@ -78,7 +78,7 @@ ul.posts span {
 .title {
    color: #a00;
    font-weight: bold;
-   margin-bottom: 2em;
+   margin: .5em 1.1em .5em 1.1em;
 }
 
 .site .title a {
