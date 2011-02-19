@@ -4,8 +4,10 @@ title: I'm a lumberjaph
 ---
 {% assign first_post = site.posts.first %}
 <div id="post">
-  <h2><a href="{{ first_post.url }}">{{ first_post.title }}</a></h2>
-  <div id="date">published {{ first_post.date | date_to_string }}</div>
+  <h2 id="post_title"><a href="{{ first_post.url }}">{{first_post.title }}</a></h2>
+  <article>
+  <h4 id="date">published {{ first_post.date | date_to_string }}</h4>
   {{ first_post.content }}
+  </article>
   <a id="more" href="{{ first_post.url }}#disqus">Comments &raquo;</a>
 </div>
