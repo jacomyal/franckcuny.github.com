@@ -131,7 +131,7 @@ ul.posts span {
    border: 0;
 }
 
-#post {
+#post #page {
    margin: .5em 1.1em .5em 1.1em;
 }
 
@@ -181,6 +181,16 @@ ul.posts span {
 }
 
 #post h3 {
+   border-bottom: 1px solid #ededed;
+   margin-top: 2em;
+}
+
+#page h2 {
+   border-bottom: 1px solid #ededed;
+   margin-top: 2em;
+}
+
+#page h3 {
    border-bottom: 1px solid #ededed;
    margin-top: 2em;
 }
