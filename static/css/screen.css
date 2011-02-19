@@ -74,7 +74,7 @@ ul.posts span {
    font-size: 110%;
    text-align: justify;
    width: 50em;
-   margin: 3em auto 2em auto;
+   margin: 3.5em 1.1em 2.5em 1.1em;
    line-height: 1.5em;
    -webkit-box-shadow: 0px 0px 10px #262526; -moz-box-shadow: 0px 0px 10px #262526;  box-shadow: 0px 0px 10px #262526; 
 }
@@ -176,7 +176,7 @@ ul.posts span {
 }
 
 #post_title {
-   margin: .5em 1.1em .5em 1.1em;
+
    text-align: left;
    padding-bottom: .1em;
    letter-spacing: 2px;
