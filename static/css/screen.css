@@ -131,7 +131,11 @@ ul.posts span {
    border: 0;
 }
 
-#post #page {
+#page {
+   margin: .5em 1.1em .5em 1.1em;
+}
+
+#post {
    margin: .5em 1.1em .5em 1.1em;
 }
 
