@@ -12,7 +12,7 @@ Let's mimic their page.
 
 h1. Installation
 
-# install plack (cpanminus Plack)
+# install "Plack::Middleware::ConsoleLogger":http://search.cpan.org/perldoc?Plack::Middleware::ConsoleLogger (*cpanminus Plack::Middleware::ConsoleLogger*)
 # no step 2
 # no step 3
 # write a simple PSGI application and log
@@ -34,7 +34,7 @@ h2. Dancer
 
 I don't know for other framework, but you can also log to your browser with "Dancer":http://perldancer.org/.
 
-In your application, you need to edit the environment file. You'll certainly want to change 'development.yml'.
+First, you need to install "Dancer::Logger::PSGI":http://search.cpan.org/perldoc?Dancer::Logger::PSGI, then, in your application, you need to edit the environment file. You'll certainly want to change 'development.yml'.
 
 bc.. logger: "PSGI"
 plack_middlewares:
