@@ -4,7 +4,7 @@ category: perl
 title: PSGIChrome
 ---
 
-Earlier this month, I've found this extension: "chromePHP":http://www.chromephp.com/.
+Earlier this month, I've read about this extension: "chromePHP":http://www.chromephp.com/.
 
 The principle of this extension is to allow you to log from your PHP application to crhome. You may not be aware, but this is something you already have with every web application if you're using Plack. And not only for Chrome, but every webkit navigator, and Firefox!
 
