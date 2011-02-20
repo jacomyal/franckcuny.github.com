@@ -6,7 +6,7 @@ title: PSGIChrome
 
 Earlier this month, I've read about this extension: "chromePHP":http://www.chromephp.com/.
 
-The principle of this extension is to allow you to log from your PHP application to crhome. You may not be aware, but this is something you already have with every web application if you're using Plack. And not only for Chrome, but every webkit navigator, and Firefox!
+The principle of this extension is to allow you to log from your PHP application to chrome. You may not be aware, but this is something you already have with every web application if you're using Plack. And not only for Chrome, but every webkit navigator, and Firefox too!
 
 Let's mimic their page.
 
@@ -17,14 +17,13 @@ h1. Installation
 # no step 3
 # write a simple PSGI application and log
 
-<script
-src="https://gist.github.com/750108.js?file=chromeplack.pl"></script>
+<script src="https://gist.github.com/750108.js?file=chromeplack.pl"></script>
 
 Load this application with plackup:
 
 bc. plackup chromeplack.pl
 
-point your browser to *http://localhost:5000*, activate the javascript console (with chrome of firefox, this work with both).
+point your browser to *http://localhost:5000*, activate the javascript console.
 
 if this works correctly, you should have a smiliar output in your console:
 
@@ -41,4 +40,4 @@ plack_middlewares:
   - 
     - ConsoleLogger
 
-p. Now you can start your application (running in Plack environment, of course), and next time you'll use 'warning' or 'debug' or any other keyword from Dancer::Logger, the message will end up in your javascript console.
+p. Now you can start your application (running in a Plack environment, of course), and next time you'll use 'warning' or 'debug' or any other keyword from Dancer::Logger, the message will end up in your javascript console.
