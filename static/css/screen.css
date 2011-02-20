@@ -179,12 +179,10 @@ ul.posts span {
 }
 
 #date {
-   font-size: 70%;
+   font-size: 50%;
    text-align: right;
-   margin-right: 1.7em;
-   margin-top: .7em;
-   margin-bottom: 4em;
    font-weight: normal;
+   float: right;
 }
 
 #post h2 {
