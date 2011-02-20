@@ -1,0 +1,44 @@
+---
+layout: post
+category: perl
+title: PSGIChrome
+---
+
+Earlier this month, I've found this extension: "chromePHP":http://www.chromephp.com/.
+
+The principle of this extension is to allow you to log from your PHP application to crhome. You may not be aware, but this is something you already have with every web application if you're using Plack. And not only for Chrome, but every webkit navigator, and Firefox!
+
+Let's mimic their page.
+
+h1. Installation
+
+# install plack (cpanminus Plack)
+# no step 2
+# no step 3
+# write a simple PSGI application and log
+
+<script
+src="https://gist.github.com/750108.js?file=chromeplack.pl"></script>
+
+Load this application with plackup:
+
+bc. plackup chromeplack.pl
+
+point your browser to *http://localhost:5000*, activate the javascript console (with chrome of firefox, this work with both).
+
+if this works correctly, you should have a smiliar output in your console:
+
+<a href="http://f.lumberjaph.net/blog/misc/plack_chrome.png"><img class="img_center" src="http://f.lumberjaph.net/blog/misc/plack_chrome.png" /></a>
+
+h2. Dancer
+
+I don't know for other framework, but you can also log to your browser with "Dancer":http://perldancer.org/.
+
+In your application, you need to edit the environment file. You'll certainly want to change 'development.yml'.
+
+bc.. logger: "PSGI"
+plack_middlewares:
+  - 
+    - ConsoleLogger
+
+p. Now you can start your application (running in Plack environment, of course), and next time you'll use 'warning' or 'debug' or any other keyword from Dancer::Logger, the message will end up in your javascript console.
