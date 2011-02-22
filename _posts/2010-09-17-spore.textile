@@ -45,14 +45,15 @@ public_timeline:
 
 Whatever your language of choice is, you'll always need this informations. The idea with the API description, is that it can be reused by every language. If the API provider publishes this file, everyone can easily use it. It's very similar to a documentation (for the twitter description, all I needed to do was to copy/paste the documentation, it's really that simple) but it can be used by a framework to generate a client.
 
-The specifications should be in JSON (I've written the example in YAML for the sake of readability). The complete description of the specification is available "here":https://github.com/franckcuny/net-http-spore/blob/master/spec/spore_description.pod.
+The specifications should be in JSON (I've written the example in YAML for the sake of readability). The complete description of the specifications are available "here":https://github.com/SPORE/specifications
+
 
 There is many advantages to do it this way:
 
  * if you have a client in Perl and Javascript, the names of the methods are the same in both langages, and the names of parameters too
  * if the API changes some endpoints, you don't have to change your code, you only need to update the description file
 
-I've started to write some specifications for a few services ("twitter":https://github.com/franckcuny/spore/blob/master/services/twitter.json, "github":https://github.com/franckcuny/spore/blob/master/services/github.json, "backtype":https://github.com/franckcuny/spore/blob/master/services/backtype.json, "backtweet":https://github.com/franckcuny/spore/blob/master/services/backtweet.json, ...) and applications ("couchdb":https://github.com/franckcuny/spore/blob/master/apps/couchdb.json, "presque":https://github.com/franckcuny/spore/blob/master/apps/presque.json). They are not complete yet, so you're welcomed to "fork the repository":https://github.com/franckcuny/spore, add missings methods, and add your own specifications! :)
+I've started to write some specifications for a few services ("twitter":https://github.com/SPORE/api-description/blob/master/services/twitter.json, "github":https://github.com/SPORE/api-description/blob/master/services/github.json, "backtype":https://github.com/franckcuny/spore/blob/master/services/backtype.json, "backtweet":https://github.com/franckcuny/spore/blob/master/services/backtweet.json, ...) and applications ("couchdb":https://github.com/franckcuny/spore/blob/master/apps/couchdb.json, "presque":https://github.com/franckcuny/spore/blob/master/apps/presque.json). They are not complete yet, so you're welcomed to "fork the repository":https://github.com/franckcuny/spore, add missings methods, and add your own specifications! :)
 
 h3. Client Specification
 
