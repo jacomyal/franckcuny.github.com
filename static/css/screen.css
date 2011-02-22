@@ -88,11 +88,20 @@ ul.posts span {
    color: #a00;
    font-weight: bold;
    margin: .5em 1.1em .5em 1.1em;
+   font-size: 120%;
+
+}
+
+.title .home {
+   font-size: 160%;
 }
 
 .site .title a {
    color: #a00;
    text-decoration: none;
+   -moz-transition: color .25s linear;
+   -webkit-transition: color .25s linear;
+   transition: color .25s linear;
 }
 
 .site .title a:hover {
