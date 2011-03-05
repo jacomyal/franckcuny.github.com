@@ -4,7 +4,7 @@ title: I'm a lumberjaph
 ---
 {% assign first_post = site.posts.first %}
 <div id="post">
-  <h2 id="post_title"><a href="{{ page.url }}" rel="bookmark" title="{{ first_post.title }}">{{ first_post.title }}</a><span id="date">published <time datetime="{{ first_post.date }}" pubdate>{{ first_post.date | date_to_string }}</time></span></h2>
+  <h2 id="post_title"><a href="{{ first_post.url }}" rel="bookmark" title="{{ first_post.title }}">{{ first_post.title }}</a><span id="date">published <time datetime="{{ first_post.date }}" pubdate>{{ first_post.date | date_to_string }}</time></span></h2>
   <article>
   {{ first_post.content }}
   </article>
