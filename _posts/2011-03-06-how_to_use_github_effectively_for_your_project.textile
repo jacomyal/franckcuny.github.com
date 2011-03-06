@@ -1,0 +1,71 @@
+---
+layout: default
+title: how to use GitHub effectively for your project
+category: dancer
+---
+
+<a href="https://github.com/">GitHub</a> provide an awesome set of tools for opensource developers. For <a href="http://perldancer.org">Dancer</a>, we try to use them as much as possible. I'll try to show and explain how we do our development.
+
+<img style="display: block; margin-left: auto; margin-right: auto;" src="/static/imgs/github_dancer.jpg" />
+
+h2. code review
+
+<a href="https://github.com/sukria/dancer">Dancer</a>'s development goes fast. We try to ship often, we do a lot of refactoring, and we listen our users. This means processing pull request and issues as fast as possible.
+
+h3. pull request
+
+There is five developers with write access to the main repository. Each one is asked to do a review of pending pull request every morning (this is not required, neither enforced, it's a "if you have ten minutes in the morning while drinking your cofee, please, review the PR").
+
+When we're reviewing something, most of the time we pull the submited patches into a branch named *review/username*. If the reviewer is happy with the modifications, he will add a comment to the pull request: "approved" (and some other comments if it's required). In case he's not happy, he will comment *disaproved* and give his reasons (tests doesn't passes, or there is no tests for the patch provided, or this is not something we want, etc). If the PR is about something the developer doesn't really knows, or has a doubt, he skip this one, and ask for someone else to take a look.
+
+In order to merge the branch *review/username*, we need two developers to comment *approved*. Of course, for something simple, like a documentation fix, and changing a few line somewhere, we can merge this without requiring someelse to approve.
+
+As the work consist to only read the code, and comment, it's quiete easy to handle two/three pull request each day for a developper. When one of the developper with access to the repository has some time in the week, or during the weekend, he can go through the pull request, and merge the one marqued as approved, since he knows that the people who had already approved them understand the code.
+
+h3. issues
+
+We don't use "RT":http://bestpractical.com/rt/ for our issues. It's not that RT is bad or anything else, it's just that GitHub's issues are more integrated with our workflow. GitHub's issues are really simple (one can even say naive), but most of the time it's ok for us. We don't need advanced features like "track how much time you've spend on this ticket" (even if I do track my time spent on Dancer, using "org-mode":http://orgmode.org/manual/Clocking-commands.html#Clocking-commands).
+
+One of the nice feature of GitHub's issues, is that you can close them with a commit. If the commit's message looks like 'closes GH-123', the issue 123 will be closed, with a link to the commit in the comment ("take a look":https://github.com/sukria/Dancer/issues/249). I find this feature really useful, since when refering to a closed issue, you can find the commit inside the ticket.
+
+Once or twice a week, we try to proceed a *triage*, where we go through the issues, and tag them.
+
+When someone report something on the mailing list or on irc, we ask them if they can open an issue, since it's easier for us to track the request.
+
+An issue doesn't need to be about a bug, it could be:
+
+ * a feature request (I want to do x or y with dancer)
+ * something that need to be refactored
+ * an issue reported by an user that need feedback from the developers
+
+h3. commenting on code
+
+Another nice feature is the possibility to comment the code. Most of the time you'll do it while reviewing a pull request. But a user can also comment on something.
+
+Sometimes we push a branch that need some feedback, and "a discussion will be started":https://github.com/sukria/Dancer/commit/d8e79e0d63d0e1b0e05fd36f9e31c378678fccc3.
+
+h3. comparing branches
+
+You can easily diff two branches. With "this url":https://github.com/sukria/Dancer/compare/master...devel you can do a quick diff of the changes between master and devel, see the list of commits, and which files have changed.
+
+This is usefull when you want to have an overview of the work.
+
+h2. gitflow
+
+We're using "gitflow":https://github.com/nvie/gitflow to work. Gitflow is a nice tool that help you to create and merge branches. If you don't know gitflow, there is "a good article that explain the reason behind it":http://nvie.com/posts/a-successful-git-branching-model/.
+
+Ok, this has nothing to do with GitHub, but I'll explain quickly what we do with this.
+
+Whe use the following convention:
+
+ * master: only for release
+ * devel: this is the development branch. This one should *always* work (tests can't be broken)
+ * topic/$name: when we start to develop a new feature, we create a topic branch
+ * hotfix/$name: when we need to release a new version right now, without merging devel before, we create a hofrix branch
+ * release/$version: when we're ready to ship, we create a new branch
+
+It's very rare that we need to push a hotfix or release branch to GitHub: thoses branches had a really a short life span. But *topic* branches can be pushed, when we want feedback from users or other developers.
+
+h2. future
+
+We're already using "jitterbug":https://github.com/franckcuny/jitterbug to do some continuous integration. In a near future, we will use "git's notes":http://progit.org/2010/08/25/notes.html with jitterbug. The idea is to store inside a note, for each build, the duration of the build, and the result of the build (failure / success) and maybe the TAP output in case of failure. This will allow developpers to see directly in the log the status. Of course, GiHub already display them while browsing the logs, so this will be very useful.
