@@ -18,9 +18,9 @@ I wanted to do something similar again, but not with the same data. So I took a 
 
 bq. This graph will be printed on a poster, size will be "A2":http://en.wikipedia.org/wiki/A2_paper_size and "A1":http://en.wikipedia.org/wiki/A1_paper_size". Please, contact me *(franck.cuny [at] linkfluence.net)* if you will be interested by one.
 
-<center>!/static/imgs/general.png(global)!</center>
+<img class="img_center" src="/static/imgs/general.png" title="github explorer global" />
 
-<center>!/static/imgs/zoom.png(zoom)!</center>
+<img class="img_center" src="/static/imgs/zoom.png" title="github explorer zoom" />
 
 This time, I didn't aim for the Perl community only, but the whole github communities. I've created several graphs:
 
@@ -61,7 +61,7 @@ h3. Github
 
 bq. properties of the graph: 16443 nodes / 130650 edges
 
-<a href="http://www.flickr.com/photos/franck_/4460144638/" title="Github - All - by languages by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4027/4460144638_48e7d83e80.jpg" width="482" height="500" alt="Github - All - by languages" /></a>
+<a href="http://www.flickr.com/photos/franck_/4460144638/" title="Github - All - by languages by franck.cuny, on Flickr"><img class="img_center" src="http://farm5.static.flickr.com/4027/4460144638_48e7d83e80.jpg" width="482" height="500" alt="Github - All - by languages" /></a>
 
 The first map is about all the languages available on  github. This one was really heavy, with more than 17k nodes, and 130k edges. The final version of the graph use the 2270 more connected nodes.
 
@@ -73,7 +73,7 @@ h3. Perl
 
 bq. properties of the graph: 365 nodes / 4440 edges
 
-<a href="http://www.flickr.com/photos/franck_/4456842344/" title="Perl community on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4002/4456842344_06f39127a8.jpg" width="500" height="437" alt="Perl community on Github" /></a>
+<a href="http://www.flickr.com/photos/franck_/4456842344/" title="Perl community on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4002/4456842344_06f39127a8.jpg" class="img_center" width="500" height="437" alt="Perl community on Github" /></a>
 
 The Perl community is split into two parts. On the left side, there is the occidental community, driven by people like "Florian":http://github.com/rafl, "Yuval":http://github.com/nothingmuch, "rjbs":http://github.com/rjbs, ... The second part are the japanese Perl hackers, with <a href="http://github.com/tokuhirom">Tokhuirom</a>, <a href="http://github.com/typester">Typester</a>, <a href="http://github.com/yappo">Yappo</a>, ... And in between them, <a href="http://github.com/miyagawa">Miyagawa</a> acts as a glue. This map looks a lot like the previous map of the CPAN. We can see that this community is international, with the exception of Japan that don't mix with others.
 
@@ -87,7 +87,7 @@ h3. Python
 
 <blockquote>properties of the graph: 532 nodes / 2566 edges</blockquote>
 
-<a href="http://www.flickr.com/photos/franck_/4456118597/" title="Python community, by country, on Github by franck.cuny, on Flickr"><img src="http://farm3.static.flickr.com/2676/4456118597_9d39f8d413.jpg" width="470" height="500" alt="Python community, by country, on Github" /></a>
+<a href="http://www.flickr.com/photos/franck_/4456118597/" title="Python community, by country, on Github by franck.cuny, on Flickr"><img src="http://farm3.static.flickr.com/2676/4456118597_9d39f8d413.jpg" class="img_center" width="470" height="500" alt="Python community, by country, on Github" /></a>
 
 The Python community looks a lot like the Perl community, but only in the structure of the graph. If we look closely, <a href="http://www.djangoproject.com/">Django</a> is the main project that represent Python on Github, in contrast with Perl where there is no leader. Some small projects gather small community of developers.
 
@@ -95,7 +95,7 @@ h3. PHP
 
 <blockquote>properties of the graph: 301 nodes / 1071 edges</blockquote>
 
-<a href="http://www.flickr.com/photos/franck_/4456830956/" title="PHP community on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4033/4456830956_ef0e8f3587.jpg" width="500" height="372" alt="PHP community on Github" /></a>
+<a href="http://www.flickr.com/photos/franck_/4456830956/" title="PHP community on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4033/4456830956_ef0e8f3587.jpg" class="img_center" width="500" height="372" alt="PHP community on Github" /></a>
 
 PHP is the only community that is structured this way on Github. We can clearly see that people are structured based on a project where they mainly contribute.
 
@@ -105,7 +105,7 @@ h3. Ruby
 
 <blockquote>properties of the graph: 3742 nodes / 24571 edges</blockquote>
 
-<a href="http://www.flickr.com/photos/franck_/4456914448/" title="Ruby community, by country, on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4012/4456914448_8089c3acca.jpg" width="500" height="469" alt="Ruby community, by country, on Github" /></a>
+<a href="http://www.flickr.com/photos/franck_/4456914448/" title="Ruby community, by country, on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4012/4456914448_8089c3acca.jpg" class="img_center" width="500" height="469" alt="Ruby community, by country, on Github" /></a>
 
 As for the Github graph, we can clearly see that some countries are isolated. On the right side, we have: the Japan community is at the bottom; the Spanish at the top. Australian are represented on the upper right corner, while on the left side we got the Brazilians.
 
@@ -115,7 +115,7 @@ h3. Europe
 
 <blockquote>properties of the graph: 2711 nodes / 11259 edges</blockquote>
 
-<a href="http://www.flickr.com/photos/franck_/4456862434/" title="Europe community on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4062/4456862434_324e7b2c75.jpg" width="500" height="450" alt="Europe community on Github" /></a>
+<a href="http://www.flickr.com/photos/franck_/4456862434/" title="Europe community on Github by franck.cuny, on Flickr"><img src="http://farm5.static.flickr.com/4062/4456862434_324e7b2c75.jpg" class="img_center" width="500" height="450" alt="Europe community on Github" /></a>
 
 This one shows interesting features. Some countries are really isolated. If we look at Spain, we can see a community of Ruby programmers, with an important connectivity between them, but no really strong connection with any foreign developers. We can clearly see the Perl community exists as only one community, and is not split by country. The same is true for Python.
 
@@ -123,7 +123,7 @@ h3. Japanese hackers community
 
 <blockquote>properties of the graph: 559 nodes / 5276 edges</blockquote>
 
-<a href="http://www.flickr.com/photos/franck_/4456129655/" title="Japan community on github by franck.cuny, on Flickr"><img src="http://farm3.static.flickr.com/2800/4456129655_8c6f7f20a0.jpg" width="500" height="410" alt="Japan community on github" /></a>
+<a href="http://www.flickr.com/photos/franck_/4456129655/" title="Japan community on github by franck.cuny, on Flickr"><img src="http://farm3.static.flickr.com/2800/4456129655_8c6f7f20a0.jpg" class="img_center" width="500" height="410" alt="Japan community on github" /></a>
 
 This community is unique on github. In 2007, <a href="http://github.com/yappo">Yappo</a> created <a href="http://coderepos.org/share/">coderepos.org</a>, a repository for open source developers in Japan. It was a subversion repository, with Trac as an HTTP front-end. It gathered around 900 developers, with all kind of projects (Perl, Python, Ruby, Javascript, ...). Most of these users have switched to github now.
 

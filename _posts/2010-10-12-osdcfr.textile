@@ -8,7 +8,7 @@ This weekend I went to the second edition of the OSDC.fr conference. This confer
 
 The first day of the conference, we had two excellents talk about Git. The first one by "mojombo":http://github.com/mojombo, about "advanced git usages":http://git-tips.heroku.com/#1. I've managed to get him to sign my copy of the "github poster":http://lumberjaph.net/graph/2010/03/25/github-explorer.html. The second one by BooK was about his module "Git::Repository":http://search.cpan.org/perldoc?Git::Repository (which I use for "jitterbug":http://github.com/franckcuny/jitterbug). He show us how he used git to graph his familly tree.
 
-<center><img src="http://farm5.static.flickr.com/4070/5074738888_a6c2481b03_b.jpg" alt="github poster" /></center>
+<center><img width="600" height="500" class="img_center" src="http://farm5.static.flickr.com/4070/5074738888_a6c2481b03_b.jpg" alt="github poster" /></center>
 
 Germain did an "introduction to Riak":http://www.slideshare.net/franckcuny/riak-a-file-system-for-internet, and "Julian":http://twitter.com/flngr did a talk about "Gephi":http://gephi.org/, about how it relies on the netbeans platform, and why a tool to visualize graphs is useful.
 

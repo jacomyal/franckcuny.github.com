@@ -6,7 +6,7 @@ category: dancer
 
 <a href="https://github.com/">GitHub</a> provide an awesome set of tools for opensource developers. For <a href="http://perldancer.org">Dancer</a>, we use them as much as possible. I'll show and explain how we do our development.
 
-<img style="display: block; margin-left: auto; margin-right: auto;" src="/static/imgs/github_dancer.jpg" />
+<img class="img_center" src="/static/imgs/github_dancer.jpg" />
 
 h2. code review
 
