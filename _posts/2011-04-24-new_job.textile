@@ -4,36 +4,37 @@ category: misc
 title: new job
 ---
 
-I've worked nearly four years at "Linkfluence":http://linkfluence.net/. This summer I'll leave this job to start a new one at "Say Media":http://saymedia.com/.
+I've worked for nearly four years at "Linkfluence":http://linkfluence.net/. From this summer on, I'm switching to a new job at "Say Media":http://saymedia.com/.
 
-This has been an awesome experience for me. I've learned a lot of things, worked on really interesting projects, and worked with an awesome team.
+Working at Linkfluence has been an awesome experience for me. I've learned a lot of things, worked on really interesting projects, and worked with an awesome team.
 
 h2. Linkfluence is hiring
 
-Linkfluence is always looking for developers to join the team. If you want a Perl job in France, and want to work on interesting topics as:
+Linkfluence is always looking for developers to join the team. If you want a Perl job in France, and want to work on interesting topics such as:
 
  * social media monitoring
  * web crawling
  * data indexation
  * data visualization
 
-Linkfluence is the company you want to join. Send your C.V to Camille Maussang (Linkfluence's CTO): camille.maussang at linkfluence.net if you're interested.
+Linkfluence is the company you want to join. If you're interested, send your CV to Camille Maussang (CTO at Linkfluence): camille.maussang at linkfluence.net.
 
 h3. Technologies at Linkfluence
 
-We're using a lot of technologies to solve our various problems:
+We're typically using the following technologies to solve our various problems:
 
- * Solr and ElasticSearch for indexing content from various social media (blogs, tweeter, etc)
- * "Riak":http://labs.linkfluence.net/nosql/2011/03/07/moving_from_couchdb_to_riak.html to store the content
- * a *lot* of Perl (and not the Perl of your grand mother, but Catalyst, Moose, DBIx::Class, Dancer, perl-5.12, ...)
- * Redis for caching
+ * Solr and ElasticSearch to index the contents of various social media (blogs, tweeter, etc)
+ * "Riak":http://labs.linkfluence.net/nosql/2011/03/07/moving_from_couchdb_to_riak.html to store the contents
+ * a *lot* of Perl (and not the Perl of your (dear) grandmother, but Catalyst, Moose, DBIx::Class, Dancer, perl-5.12, ...)
+ * Redis
  * PostgreSQL
+ * "Gephi":http://gephi.org/
 
 h3. Open Source at Linkfluence
 
-Developers here are encouraged to contribute to open source projects, to publish code on GitHub, to talk about the things they do.
+Developers here are encouraged to contribute to open source projects, to publish code on GitHub, and talk about the things they do.
 
-The company also send the developers to various open source conferences:
+The company also sends the developers to various open source conferences:
 
  * YAPC::Europe
  * FOSDEM
@@ -41,11 +42,11 @@ The company also send the developers to various open source conferences:
  * French Perl Workshop
  * OSDC.fr
 
-You're encouraging to talk at those conferences, and you can prepare your talk during work time. Linkfluence is also working closely with the French Perl Mongueurs, and try to organize some events with them (technical meeting, Dancer hackaton, etc).
+You're encouraged to talk at those conferences, and you can prepare your talks during work time. Linkfluence is also working closely with the French Perl Mongueurs, and tries to organize events with them (technical meetings, Dancer hackaton, etc).
  
 h3. Science at Linkfluence
 
-Most of the developers in the company are coming from a scientific background. Some of them still publish scientific papers on subject like social media and graphs analysis.
+Most of the developers in the company are coming from a scientific background (but this is not a requirement). Some of them do publish scientific papers on topics like social media and graphs analysis.
 
  * "Stabilité globale et diversité globale dans la dynamique des commentaires de Flickr":www.liafa.jussieu.fr/~prieur/Publis/TSI2444-RauxPrieurV2.pdf (Raux, Prieur, 2011)
  * "Describing the Web in less than 140 characters":http://www.icwsm.org/2011/index.php (Raux, Grunwald, Prieur, 2011)
@@ -55,8 +56,8 @@ Most of the developers in the company are coming from a scientific background. S
  * "Strategies for Online Inference of Network Mixture":lbbe.univ-lyon1.fr/annexes/franck.../SSB-RR-14-online-estimation.pdf (Zanghi, Picard, Miele, Ambroise)
  * Approches modèles pour la structuration du Web vu comme un graphe (Zanghi)
 
-If you want to work with clever people on some interesting topics like graph, and help them to implement solutions or experiment some algorithm, you'll feel at home here. 
+If you want to work with smart people on interesting topics like graphs, and help them to implement solutions or experiment with some algorithm, you'll feel at home there. 
  
-h2. futur for me
+h2. My future
 
-I'll move to San Francisco this summer to start my new job at Say. I've a lot to do before moving, but I'm very excited with this new opportunity. Sadly, I'll probably miss YAPC::EU, but I should do YAPC::NA next year \o/.
+I'll move to San Francisco this summer to start my new job at Say. I have a lot to do before moving, but I'm very excited with this new opportunity. Sadly, I'll probably miss YAPC::EU, but I should do YAPC::NA next year \o/.
