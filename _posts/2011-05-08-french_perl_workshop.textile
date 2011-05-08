@@ -4,7 +4,7 @@ layout: post
 category: perl
 ---
 
-The call for paper for the "French Perl Workshop":http://journeesperl.fr/fpw2011/ is open. This event will held the 24th and 25th of June in Paris. As always, this is a free conference.
+The call for paper for the "French Perl Workshop":http://journeesperl.fr/fpw2011/ is open. This event will be held the 24th and 25th of June in Paris. As always, this is a free conference.
 
 <img class="img_center" src="http://franck.lumberjaph.net/blog/misc/affiche_fpw11.jpg" />
 
@@ -26,4 +26,4 @@ You! of course. This event will be nothing without you, your talk, and your pres
 
 If you happen to be in Paris next week during "Solution Linux":http://www.solutionslinux.fr/?lg=en, please, stop by to the French Mongueurs booth.
 
-So, what are you waiting for ?
+So, what are you waiting to register ?
