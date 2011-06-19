@@ -1,0 +1,286 @@
+---
+title: StarGit
+layout: post
+category: community
+---
+
+Last year I did a "small exploration of GitHub":http://lumberjaph.net/graph/2010/03/25/github-explorer.html to show the various communities using "GitHub":http://github.com and how they work. I wanted to do it again this year, but I was lacking time and motivation to start over. A couple of months ago, I got a message from "mojombo":https://twitter.com/#!/mojombo asking me if I was planning to do a new poster. This triggered the motivation to work on it again.
+
+This time I got help from "Alexis":https://twitter.com/#!/jacomyal to provide you with an awesome tool: "a real explorer of your graph":http://www.stargit.net, but more on this later ;)
+
+<img class="img_center" src="/static/imgs/stargit.png" title="StarGit" />
+
+And of course, "the poster":http://labs.linkfluence.net.
+
+<img class="img_center" src="/static/imgs/github-poster-v2.png" title="GitHub Poster" />
+
+h2. The data
+
+All the data are available! Last year I got some mails asking me for the dataset. So this time I asked first if I could release the data with the code and the poster, and the anwser is yes! So if you're intereseted, you can download it.
+
+The data are stored in mongodb, so I provide the dump which you can easily use:
+
+  # @wget http://maps.stargit.net/dump/github.tgz@
+  # @tar xvzf github.tgz@
+  # @cd github@
+  # @mongorestore -d github .@
+
+Now you can use mongodb to browse the imported database. There is 5 collections: profiles / repositories / relations / contributions / edges.
+  
+h2. Methodology
+
+Last year I did a simple "follower/following" graph. It was already interesting, but it was also *really* too simple. This time I wanted to go deeper in the exploration.
+
+The various step to process all this data are:
+
+ * using the GitHub API, fetch informations from the profiles.
+ * when all the profiles are collected, informations about the repositories are fetched. Only forked repositories are kept.
+ * "simple" relations (followers/following) are kept and used later to add weight to relations.
+ * tag user with the main programming language they use. Using the GitHub API, I was able to categorize ~40k profiles (about 1/3 of my whole dataset).
+ * using the GeoNames API, extract the name of the country the user is in. This time, about 55k profiles were tagged.
+ * fetch contributions for each repositories
+ * compute a score between the author of the contribution and the owner of the repo
+ * add a weight to each edges, using the computed score and "+1" if the developer follow the other developer
+
+For all the graphs, I've used the following colors for:
+
+ * <span style="color:#C40C0F">Ruby</span>
+ * <span style="color:#4C9E97">JavaScript</span>
+ * <span style="color:#3F9E16">Python</span>
+ * <span style="color:#8431C4">C (C++, C#)</span>
+ * <span style="color:#29519E">Perl</span>
+ * <span style="color:#9D61C4">PHP</span>
+ * <span style="color:#C4B646">JVM (Java, Clojure, Scala)</span>
+ * <span style="color:#90C480">Lisp (Emacs Lisp, Common Lisp)</span>
+ * <span style="color:#9C9E9C">Other</span>
+
+h2. Exploring
+
+Feel free to do your own analysis in the comments :) For each map, you'll find a PDF of a map, and the graph to explore using gephi (in GEXF or GDF format).
+
+h3. but first, some numbers
+
+I've collected:
+
+ * 123 562 profiles
+ * 2 730 organizations
+ * 40 807 repositories
+
+This took me about a month in order to collect the data and to build the adapted tools.
+ 
+h4. Accounts creations
+
+The following chart show the number of account created by month. "Everyone" means the total of accounts created. You can also see the numbers for each communities.
+
+On the "Everyone" graph, you can see a huge pick around April 2008, that's the date GitHub "was launched":https://github.com/blog/40-we-launched.
+
+For most of the communities, the number of created accounts start to decrease since 2010. I think the reason is that most of the developers from those communities are now on GitHub.
+
+<script language="javascript" type="text/javascript" src="/static/js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="/static/js/jquery.flot.js"></script> 
+
+<div id="placeholder" style="width:800px;height:300px;"></div> 
+
+<ul class="actions">
+  <li class="minibutton"><input class="fetchSeries" type="button" value="Everyone" href="/static/json/global.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="C" href="/static/json/C.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="JVM" href="/static/json/JVM.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="JS" href="/static/json/JavaScript.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="Lisp" href="/static/json/Lisp.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="Perl" href="/static/json/Perl.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="PHP" href="/static/json/PHP.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="Python" href="/static/json/Python.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="Ruby" href="/static/json/Ruby.json"></li>
+  <li class="minibutton"><input class="fetchSeries" type="button" value="Uncategorized users" href="/static/json/Other.json"></li>
+  <li class="minibutton"><input class="resetSeries" type="button" value="reset"></li>
+</ul>
+
+<script type="text/javascript"> 
+$(function () {
+    var options = {
+        lines: { show: true },
+        points: { show: true },
+        xaxis: { mode:"time" }
+    };
+    var data = [];
+    var placeholder = $("#placeholder");
+    
+    $.plot(placeholder, data, options);
+ 
+    // fetch one series, adding to what we got
+    var alreadyFetched = {};
+
+    $("input.resetSeries").click(function() {
+        alreadyFetched = {};
+        data = [];
+        $.plot(placeholder, data, options);
+    });
+    
+    $("input.fetchSeries").click(function () {
+        var button = $(this);
+        
+        // find the URL in the link right next to us 
+        var dataurl = button.attr('href');
+ 
+        // then fetch the data with jQuery
+        function onDataReceived(series) {
+            // extract the first coordinate pair so you can see that
+            // data is now an ordinary Javascript object
+            var firstcoordinate = '(' + series.data[0][0] + ', ' + series.data[0][1] + ')';
+ 
+            // let's add it to our current data
+            if (!alreadyFetched[series.label]) {
+                alreadyFetched[series.label] = true;
+                data.push(series);
+            }
+            
+            // and plot all we got
+            $.plot(placeholder, data, options);
+         }
+        
+        $.ajax({
+            url: dataurl,
+            method: 'GET',
+            dataType: 'json',
+            success: onDataReceived
+        });
+    });
+});
+</script> 
+
+h4. languages
+
+(Keep in mind that these numbers are coming from the profiles I was able to tag, roughly 40k)
+
+ # Ruby: 10046 (28%)
+ # Python: 5403 (15%)
+ # JavaScript: 5282 (15%) (JavaScript + CoffeeScript)
+ # C: 5093 (14%) (C, C++, C#)
+ # PHP: 3933 (11%)
+ # JVM: 3790 (10%) (Java, Clojure, Scala, Groovy)
+ # Perl: 1215 (3%)
+ # Lisp: 348 (0%) (Emacs Lisp, Common Lisp)
+
+Those numbers doesn't really match "what GitHub gave":https://github.com/languages, but it could be explained by the way I've selected my users.
+
+h4. country
+
+ # United States: 19861 (36%)
+ # United Kingdom: 3533 (6%)
+ # Germany: 3009 (5%)
+ # Canada: 2657 (4%)
+ # Brazil: 2454 (4%)
+ # France: 1833 (3%)
+ # Japan: 1799 (3%)
+ # Russia: 1604 (2%)
+ # Australia: 1441 (2%)
+ # China: 1159 (2%)
+
+The United States are still the main country represented on GitHub, no suprise here.
+
+If you are interested in the "geography" of Open Source, you should read these two articles: "Coding Places":http://takhteyev.org/dissertation/ and "Investigating the Geography of Open Source Software through Github":http://takhteyev.org/papers/Takhteyev-Hilts-2010.pdf.
+
+h4. companies
+
+Looking at the "company" field on user's profile, here are some stats about which companies has employees using GitHub:
+
+ # ThoughtWorks: 102
+ # Google: 66
+ # Mozilla: 65
+ # Yahoo!: 65
+ # Red Hat: 64
+ # Globo.com: 55
+ # Twitter: 53
+ # Facebook: 45
+ # Yandex: 43
+ # Intridea: 34
+ # Microsoft: 33
+ # Engine Yard: 32
+ # Pivotal Labs: 29
+ # MIT: 28
+ # Rackspace: 27
+ # IBM: 24
+ # Caelum: 23
+ # Novell: 22
+ # GitHub: 22
+ # VMware: 22
+
+I didn't knew the first company, ThoughtWorks, and I was expecting to see FaceBook or Twitter as the company with most developpers on GitHub. It's also interesting to see Yandex here.
+
+h3. Global graph (1628 nodes, 9826 edges)
+
+("download PDF":http://maps.stargit.net/global/global.pdf, "download GDF":http://maps.stargit.net/global/global.gdf)
+
+The main difference with last year, is the android / modders community. They're developing mostly in C and Java. The poster has been created from this map.
+
+h3. Ruby (1968 nodes, 9662 edges)
+
+("download PDF":http://maps.stargit.net/ruby/ruby.pdf, "download GDF":http://maps.stargit.net/ruby/ruby.gdf, "download GEXF":http://maps.stargit.net/ruby/ruby.gexf)
+
+This is still the main community on GitHub, even if JavaScript is now "the most popular language":https://github.com/languages/JavaScript. This graph is really dense, it's not easy to read, since there is no real cluster in this one.
+
+h3. Python (1062 nodes, 2631 edges)
+
+("download PDF":http://maps.stargit.net/python/python.pdf, "download GDF":http://maps.stargit.net/python/python.gdf)
+
+Here we have some clusters. I'm not familiar with the Python community, so I can't really give any insight.
+
+h3. Perl (608 nodes, 2967 edges)
+
+("download PDF":http://maps.stargit.net/perl/perl.pdf, "download GDF":http://maps.stargit.net/perl/perl.gdf, "download GEXF":http://maps.stargit.net/perl/perl.gexf)
+
+I really like this graph since it show (in my opinion) one of the real strength of this community: everybody works with everybody. People working on a webframework will collaborate with people working on Moose, or an ORM, or other tools. It shows that in this community, people are competent in more than one field.
+
+The Perl community is about the same size as last year. However, we can extract the following informations:
+
+ * the Japaneses Perl Hackers are still a cluster by themselves
+ * "miyagawa":http://github.com/miyagawa is still the glue between the Japanese community and the "rest of the world"
+ * other leaders are: Florian Ragwith ("rafl":http://github.com/rafl), Andy Amstrong ("AndyA":http://github.com/andya), Dave Rolsky ("autarch":http://github.com/autarch)
+ * some clusters exists for the following projects:
+ ** Moose
+ ** Dancer
+
+As we can see on the previous charts, the number of created accounts for the Perl developpers is stalling.
+
+h3. United States (2646 nodes, 11344 edges)
+
+("download PDF":http://maps.startgit.net/unitedstates/unitedstates.pdf, "download GDF":http://maps.startgit.net/unitedstates/unitedstates.gdf, "download GEXF":http://maps.startgit.net/unitedstates/unitedstates.gexf)
+
+This one is really nice. We can clearly see all the communities. There is something interesting:
+
+ # C and Ruby are on the opposite side (C on the left, Ruby on the right)
+ # Python and Perl are also opposed (Perl at the bottom and Python at the top)
+
+I'll let you take some conclusion by yourself on this one ;)
+ 
+h3. France (706 nodes, 1059 edges)
+
+("download PDF":http://maps.stargit.net/france/france.pdf, "download GDF":http://maps.stargit.net/france/france.gdf, "download GEXF":http://maps.stargit.net/france/france.gexf)
+
+We have a lot of small clusters on this one, and some very big authorities.
+
+h3. Japan (464 nodes, 1091 edges)
+
+("download PDF":http://maps.stargit.net/japan/japan.pdf, "download GDF":http://maps.stargit.net/japan/japan.gdf, "download GEXF":http://maps.stargit.net/japan/japan.gexf)
+
+There is three dominants clusters on this one:
+
+ # Ruby
+ # Perl
+ # C
+
+The Ruby and Perl one are well connected. There is a lot of japanese hacker on CPAN using both languages. 
+ 
+h2. StarGit
+
+"StarGit":http://stargit.net is a great tool we built with Alexis to let you explore *your* community on GitHub.
+
+It's hosted on "dotcloud":http://doutcloud.com (I'm still amazed at how easy it was to deploy the code ...), using the Perl "Dancer web framework":http://perldancer.org, MongoDB to store the data, and Redis to do some caching. Alexis built the flash application, and will give more details about it on his blog.
+
+h2. Credits
+
+I would like to thanks the whole GitHub team for being interested in the previous poster and to ask another one this year :) 
+
+A *huge* thanks to Alexis for his help on building the awesome StarGit. Another big thanks to Antonin for his work on the poster.
+
+
