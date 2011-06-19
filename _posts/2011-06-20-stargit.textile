@@ -16,7 +16,7 @@ And of course, "the poster":http://labs.linkfluence.net.
 
 h2. The data
 
-All the data are available! Last year I got some mails asking me for the dataset. So this time I asked first if I could release the data with the code and the poster, and the anwser is yes! So if you're intereseted, you can download it.
+All the data are available! Last year I got some mails asking me for the dataset. So this time I asked first if I could release the "data":http://maps.startigt.net/dump/github.tgz with the "code":https://github.com/franckcuny/StarGit and the poster, and the anwser is yes! So if you're intereseted, you can download it.
 
 The data are stored in mongodb, so I provide the dump which you can easily use:
 
