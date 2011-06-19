@@ -258,3 +258,37 @@ ul.posts span {
    margin-left: 30px;
    -webkit-box-shadow: 5px 5px 10px #262526; -moz-box-shadow: 5px 5px 10px #262526;  box-shadow: 5px 5px 10px #262526;
 }
+
+/* stargit */
+ul.actions {
+   display: block;
+   list-style-type: none;
+   overflow: hidden;
+   padding: 0;
+}
+
+ul.actions li {
+   float: left;
+   font-size: 1.2em;
+   margin-left: 0.6em;
+}
+
+.minibutton input {
+   background-color: #f7f7f7;
+   border: 1px solid #d4d4d4;
+   color: #333;
+   display: block;
+   font-weight: bold;
+   margin: 0;
+   padding: 0.4em 1em;
+   height: 2em;
+
+   text-shadow: 0 1px 0 #fff;
+
+   background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#ececec));
+   background: -moz-linear-gradient(top, #f4f4f4, #ececec);
+
+   border-radius: 3px;
+   -moz-border-radius: 3px;
+   -webkit-border-radius: 3px;
+}
