@@ -10,7 +10,7 @@ This time I got help from "Alexis":https://twitter.com/#!/jacomyal to provide yo
 
 <img class="img_center" src="/static/imgs/stargit.png" title="StarGit" />
 
-And of course, "the poster":http://labs.linkfluence.net.
+And of course, "the poster":http://labs.linkfluence.net. Feel free to print it yourself, the size of the poster is A1.
 
 <img class="img_center" src="/static/imgs/github-poster-v2.png" title="GitHub Poster" />
 
@@ -56,7 +56,7 @@ For all the graphs, I've used the following colors for:
 
 h2. Exploring
 
-Feel free to do your own analysis in the comments :) For each map, you'll find a PDF of a map, and the graph to explore using gephi (in GEXF or GDF format).
+Feel free to do your own analysis in the comments :) For each map, you'll find a PDF of the map, and the graph to explore using gephi (in GEXF or GDF format).
 
 h3. but first, some numbers
 
