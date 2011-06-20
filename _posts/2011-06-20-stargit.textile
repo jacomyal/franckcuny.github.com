@@ -235,7 +235,7 @@ The Perl community is about the same size as last year. However, we can extract 
 
  * the Japaneses Perl Hackers are still a cluster by themselves
  * "miyagawa":http://github.com/miyagawa is still the glue between the Japanese community and the "rest of the world"
- * other leaders are: Florian Ragwith ("rafl":http://github.com/rafl), Andy Amstrong ("AndyA":http://github.com/andya), Dave Rolsky ("autarch":http://github.com/autarch)
+ * other leaders are: Florian Ragwitz ("rafl":http://github.com/rafl), Andy Amstrong ("AndyA":http://github.com/andya), Dave Rolsky ("autarch":http://github.com/autarch)
  * some clusters exists for the following projects:
  ** Moose
  ** Dancer
