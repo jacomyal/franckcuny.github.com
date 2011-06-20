@@ -275,7 +275,7 @@ h2. StarGit
 
 "StarGit":http://stargit.net is a great tool we built with Alexis to let you explore *your* community on GitHub. You can read more about the application on "Alexis' blog":http://ofnodesandedges.com/2011/06/20/stargit.html
 
-It's hosted on "dotcloud":http://doutcloud.com (I'm still amazed at how easy it was to deploy the code ...), using the Perl "Dancer web framework":http://perldancer.org, MongoDB to store the data, and Redis to do some caching.
+It's hosted on "dotcloud":http://dotcloud.com (I'm still amazed at how easy it was to deploy the code ...), using the Perl "Dancer web framework":http://perldancer.org, MongoDB to store the data, and Redis to do some caching.
 
 h2. Credits
 
