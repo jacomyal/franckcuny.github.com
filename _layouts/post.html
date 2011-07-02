@@ -2,7 +2,7 @@
 layout: default
 ---
 <div id="post">
-  <h2 id="post_title"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a><span id="date">published <time datetime="{{ page.date }}" pubdate>{{ page.date | date_to_string }}</time></span></h2>
+  <h2 id="post_title"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a><span id="date">published <time datetime="{{ page.date }}" pubdate>{{ page.date | date_to_string }}</time><g:plusone></g:plusone></span></h2>
   <article>
     {{ content }}
   </article>
