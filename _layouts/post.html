@@ -2,10 +2,16 @@
 layout: default
 ---
 <div id="post">
-  <h2 id="post_title"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a><span id="date"><g:plusone size="small"></g:plusone>published <time datetime="{{ page.date }}" pubdate>{{ page.date | date_to_string }}</time></span></h2>
+    <h2 id="post_title">
+        <span id="gplus"><g:plusone size="medium" annotation="none"></g:plusone></span><span id="actual_title"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></span>
+    </h2>
+  
+    <span id="date">published <time datetime="{{ page.date }}" pubdate>{{ page.date | date_to_string }}</time></span>
+
   <article>
     {{ content }}
   </article>
+
   <hr />
   {% include disqus.html %}
 </div>
