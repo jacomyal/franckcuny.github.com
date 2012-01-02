@@ -5,10 +5,14 @@ title: I'm a lumberjaph
 {% assign first_post = site.posts.first %}
 <div id="post">
     <h2 id="post_title">
-        <span id="gplus"><g:plusone size="medium" annotation="none"></g:plusone></span><span id="actual_title"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></span>
+        <span id="gplus"><g:plusone size="medium"
+            annotation="none"></g:plusone></span><span id="actual_title"><a
+                href="{{ first_post.url }}" rel="bookmark" title="{{
+                first_post.title }}">{{ first_post.title }}</a></span>
     </h2>
 
-    <span id="date">published <time datetime="{{ page.date }}" pubdate>{{ page.date | date_to_string }}</time></span>
+    <span id="date">published <time datetime="{{ first_post.date }}"
+        pubdate>{{ first_post.date | date_to_string }}</time></span>
 
   <article>
   {{ first_post.content }}
