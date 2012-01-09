@@ -1,0 +1,13 @@
+---
+layout: post
+category: weekly
+title: Weekly Review - 2012-01
+---
+
+What I've done this week:
+
+ * "applied Brian's patches for Net::HTTP::Spore":https://github.com/franckcuny/net-http-spore/pull/11
+ * "remove a useless regex in Net::HTTP::Spore":https://github.com/franckcuny/net-http-spore/commit/d41d8b640be7a0a364fefd30355081df69cc5cf0
+ * "rewrite":htps://github.com/franckcuny/fluffyhttp/issues/2 the way Headers are handled withing `http'
+ * some documentation for `http' * ("Response":https://github.com/franckcuny/fluffyhttp/issues/4 objects)
+ * "refactoring":https://github.com/franckcuny/fluffyhttp/issues/7 of the Header class to add some properties when required
