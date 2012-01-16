@@ -1,0 +1,16 @@
+---
+layout: post
+category: weekly
+title: Weekly Review - 2012-02
+---
+
+I didn't do much this week. Here is a quick list:
+
+ * "published an AnyEvent client for Peer39's API":https://github.com/saymedia/AnyEvent-Peer39
+ * "created a bunch of tickets for Spyre":https://github.com/bl0b/spyre/issues?sort=created&direction=desc&state=open
+ * "closed gh-6 on fluffyhttp":https://github.com/franckcuny/fluffyhttp/issues/6: renamed fluffyhttp to http
+ * "closed gh-9 on
+ * fluffyhttp":https://github.com/franckcuny/fluffyhttp/issues/9: Now some headers (like *Last-Modified*) can store datetime object and are properties. If called as a property they will return the object, if they're called via the *get* method from the Header object, they will return a string.
+ * start documenting fluffyurl
+
+I should be able to do more work next week (and Monday is an holiday, I'll try to put more work on Spyre).
