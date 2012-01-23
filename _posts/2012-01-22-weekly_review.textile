@@ -1,0 +1,15 @@
+---
+layout: post
+category: weekly
+title: Weekly Review - 2012-03
+---
+
+Mostly worked on "http":https://github.com/franckcuny/http and "httpclient":https://github.com/franckcuny/http this week, and started to work on some Java project (lost two days to learn how to use Maven and eclipse, not very proud here ...)
+
+ * "closed gh-19 on http":https://github.com/franckcuny/http/issues/19: added the setup.py
+ * "closed gh-18 on http":https://github.com/franckcuny/http/issues/18: added the license file (MIT)
+ * "closed gh-17 on http":https://github.com/franckcuny/http/issues/18: use http.Url when an Url is used
+ * "closed gh-12 on http":https://github.com/franckcuny/http/issues/12: merged the code for fluffyurl inside http's repository
+ * "closed gh-11 on http":https://github.com/franckcuny/http/issues/11: created a new dist (httpclient) for the client's code
+ * "closed gh-5 on * httpclient":https://github.com/franckcuny/httpclient/issues/5 added the license file (MIT)
+ * some documentations for http and httpclient
