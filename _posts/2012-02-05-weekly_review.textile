@@ -1,0 +1,18 @@
+---
+layout: post
+category: weekly
+title: Weekly Review - 2012-05
+---
+
+Managed to get some work done on the Spore implementation for Python and http.
+
+ * "closed gh-2 on httpclient":https://github.com/franckcuny/httpclient/issues/2: added a new client (*httpclient.simple*, equivalent to *LWP::Simple*)
+ * "closed gh-23 on http":https://github.com/franckcuny/http/issues/23: fix a bug with `append` on Url.Path
+ * "closed gh-21 on http":https://github.com/franckcuny/http/issues/21: add a setter for `content` on Response
+ * "closed gh-24 on http":https://github.com/franckcuny/http/issues/24: when the path is empty, set it to '/' so the final url is `http://foo.com/` instead of `http://foo.com`
+ * "closed gh-22 on http":https://github.com/franckcuny/http/issues/22: small bug on the Url class. When the path was unicode, we splitted on each character instead of the default separator
+ * "closed gh-17 on spyre":https://github.com/bl0b/spyre/issues/17: simplified the interface to create a new client
+ * "closed gh-14 and gh-13 on spyre":https://github.com/bl0b/spyre/issues/14: switched to `http` and `httpclient` for spyre!
+ * "closed gh-18 on spyre":https://github.com/bl0b/spyre/issues/18: since we're using `http`, we don't need a custom *Response* class anymore
+
+Also, some code cleanup in bot projects, added a few tests, and created a few tickets for some future tasks.
