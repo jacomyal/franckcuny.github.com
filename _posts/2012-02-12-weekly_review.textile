@@ -1,0 +1,9 @@
+---
+layout: post
+category: weekly
+title: Weekly Review - 2012-06
+---
+
+Lot of documentation for "http":http://http.readthedocs.org/en/latest/index.html and "httpclient":http://httpclient.readthedocs.org/en/latest/index.html this week, and the first release (with some help from "James Rowe":https://github.com/JNRowe) for `http` on "PyPI":http://pypi.python.org/pypi/http/0.02.
+
+I've started to play with google app engine, I'll probably push two applications with their code soon.
